@@ -1,5 +1,5 @@
 import * as Dat from 'dat.gui';
-import { Scene, Color } from 'three';
+import { Scene, Color, Camera } from 'three';
 import { Flower, Land, Cat, Mop } from 'objects';
 import { BasicLights } from 'lights';
 
@@ -19,12 +19,18 @@ class SeedScene extends Scene {
         this.background = new Color(0x7ec0ee);
 
         // Add meshes to scene
+        // const flower = new Flower(this);
         const lights = new BasicLights();
-        const cat = new Cat();
-        const mop = new Mop();
-        console.log(mop);
+        const cat = new Cat(this);
+        const mop = new Mop(this);
         this.add(lights, cat, mop);
+        
+        // flower.position.set(5,0,0);
+        // console.log(flower);
         console.log(cat);
+        console.log(mop);
+
+        console.log(this.state);
 
         // Populate GUI
         this.state.gui.add(this.state, 'rotationSpeed', -5, 5);
@@ -36,11 +42,17 @@ class SeedScene extends Scene {
 
     update(timeStamp) {
         const { rotationSpeed, updateList } = this.state;
-        this.rotation.y = (rotationSpeed * timeStamp) / 10000;
-
         // Call update for each object in the updateList
         for (const obj of updateList) {
             obj.update(timeStamp);
+        }
+    }
+
+    switchTrack(direction, height, width) {
+        const { updateList } = this.state;
+        const step = 2e-3 * width;
+        for (const obj of updateList) {
+            obj.move(direction, step);
         }
     }
 }
