@@ -49,7 +49,7 @@ class SeedScene extends Scene {
     update(timeStamp) {
         const { rotationSpeed, updateList } = this.state;
         for (const obj of updateList) {
-            obj.update();
+            obj.update(timeStamp);
         }
         this.sceneGenerator();
     }

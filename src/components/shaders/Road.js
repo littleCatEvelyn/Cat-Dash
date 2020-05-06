@@ -1,4 +1,4 @@
-import { ShaderMaterial, BoxBufferGeometry, Mesh, Clock, 
+import { ShaderMaterial, BoxBufferGeometry, Mesh,
          Group, PlaneBufferGeometry, DoubleSide, Vector3 } from 'three';
 
 const fragmentShader = `
@@ -43,31 +43,30 @@ class Road extends Group {
         super();
         this.name = 'road';
 
-        this.clock = new Clock();
         this.uniforms = { 
             iTime: { value: 0 },
             iResolution:  { value: new Vector3() },
         };
-        this.material = new ShaderMaterial( {
+        const material = new ShaderMaterial( {
             uniforms: this.uniforms,
             // vertexShader: vertexShader,
             fragmentShader: fragmentShader,
             side: DoubleSide
         } );
 
-        this.plane = new PlaneBufferGeometry(6 * step, 1e4);
+        const plane = new PlaneBufferGeometry(6 * step, 1e4);
 
         this.geometry = new BoxBufferGeometry( 0.75, 0.75, 0.75 );
-        this.mesh = new Mesh( this.plane, this.material );
+        this.mesh = new Mesh( plane, material );
         this.mesh.position.set(0, -5, 0);
         this.mesh.rotation.set(Math.PI / 2, 0, Math.PI / 2);
 
         parent.addToUpdateList(this);
     }
 
-    update() {
-        var delta = this.clock.getDelta();
-        this.uniforms[ "iTime" ].value += delta * 3;
+    update(timeStamp) {
+        timeStamp *= 0.001;
+        this.uniforms[ "iTime" ].value += timeStamp / 300;
         this.uniforms["iResolution"].value.set(window.innerWidth, window.innderHeight, 1);
     }
 }

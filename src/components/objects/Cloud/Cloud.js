@@ -19,7 +19,7 @@ class Cloud extends Group {
         });
     }
 
-    update() {
+    update(timeStamp) {
         this.translateX(-0.5);
     }
 }
