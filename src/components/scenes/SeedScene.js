@@ -21,7 +21,6 @@ class SeedScene extends Scene {
         // Init state
         this.state = {
             gui: new Dat.GUI(), // Create GUI for scene
-            rotationSpeed: 1,
             updateList: [],
             playerList: [],
             pause: true,
@@ -40,7 +39,6 @@ class SeedScene extends Scene {
 
         this.add(lights, cat, mop, road);
         // Populate GUI
-        this.state.gui.add(this.state, 'rotationSpeed', -5, 5);
         this.state.gui.add(this.state, 'pause');
     }
 

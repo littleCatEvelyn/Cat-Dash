@@ -1,23 +1,28 @@
 import { ShaderMaterial, BoxBufferGeometry, Mesh, Clock, 
-         Group, PlaneBufferGeometry, DoubleSide } from 'three';
+         Group, PlaneBufferGeometry, DoubleSide, Vector3 } from 'three';
 
 const fragmentShader = `
-    uniform float time;
+    #include <common>
 
-    varying vec2 vUv;
+    uniform vec3 iResolution;
+    uniform float iTime;
 
-    void main( void ) {
+    // By iq: https://www.shadertoy.com/user/iq  
+    // license: Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License.
+    void mainImage( out vec4 fragColor, in vec2 fragCoord )
+    {
+        // Normalized pixel coordinates (from 0 to 1)
+        vec2 uv = fragCoord/iResolution.xy;
 
-        vec2 position = vUv;
+        // Time varying pixel color
+        vec3 col = 0.5 + 0.5*cos(iTime+uv.xyx+vec3(0,2,4));
 
-        float color = 0.0;
-        color += sin( position.x * cos( time / 15.0 ) * 80.0 ) + cos( position.y * cos( time / 15.0 ) * 10.0 );
-        color += sin( position.y * sin( time / 10.0 ) * 40.0 ) + cos( position.x * sin( time / 25.0 ) * 40.0 );
-        color += sin( position.x * sin( time / 5.0 ) * 10.0 ) + sin( position.y * sin( time / 35.0 ) * 80.0 );
-        color *= sin( time / 10.0 ) * 0.5;
+        // Output to screen
+        fragColor = vec4(col,1.0);
+    }
 
-        gl_FragColor = vec4( vec3( color, color * 0.5, sin( color + time / 3.0 ) * 0.75 ), 1.0 );
-
+    void main() {
+        mainImage(gl_FragColor, gl_FragCoord.xy);
     }
 `;
 
@@ -39,10 +44,13 @@ class Road extends Group {
         this.name = 'road';
 
         this.clock = new Clock();
-        this.uniforms = { "time": { value: 1.0 } };
+        this.uniforms = { 
+            iTime: { value: 0 },
+            iResolution:  { value: new Vector3() },
+        };
         this.material = new ShaderMaterial( {
             uniforms: this.uniforms,
-            vertexShader: vertexShader,
+            // vertexShader: vertexShader,
             fragmentShader: fragmentShader,
             side: DoubleSide
         } );
@@ -59,7 +67,8 @@ class Road extends Group {
 
     update() {
         var delta = this.clock.getDelta();
-        this.uniforms[ "time" ].value += delta * 5;
+        this.uniforms[ "iTime" ].value += delta * 3;
+        this.uniforms["iResolution"].value.set(window.innerWidth, window.innderHeight, 1);
     }
 }
 
