@@ -4,8 +4,7 @@ import { Flower, Land, Cat, Mop, Cloud, UFO, Tree } from 'objects';
 import { BasicLights } from 'lights';
 
 const step = 4e-3 * window.innerWidth;
-// const obstacleList = ["flower", "UFO", "land", "tree", "cloud"];
-const obstacleList = ["land", "land", "land", "land", "land"];
+const obstacleList = ["flower", "UFO", "land", "tree", "cloud"];
 
 const trackPositionList = [
                 new Vector3(150, 0, -step),
