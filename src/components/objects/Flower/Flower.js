@@ -4,13 +4,12 @@ import { TWEEN } from 'three/examples/jsm/libs/tween.module.min.js';
 import MODEL from './flower.gltf';
 
 class Flower extends Group {
-    constructor(parent) {
+    constructor() {
         // Call parent Group() constructor
         super();
 
         // Init state
         this.state = {
-            gui: parent.state.gui,
             bob: true,
             spin: this.spin.bind(this),
             twirl: 0,
@@ -21,15 +20,9 @@ class Flower extends Group {
 
         this.name = 'flower';
         loader.load(MODEL, (gltf) => {
+            gltf.scene.rotation.set(0, Math.PI / 2, 0);
             this.add(gltf.scene);
         });
-
-        // Add self to parent's update list
-        parent.addToUpdateList(this);
-
-        // Populate GUI
-        this.state.gui.add(this.state, 'bob');
-        this.state.gui.add(this.state, 'spin');
     }
 
     spin() {
