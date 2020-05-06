@@ -2,8 +2,9 @@ import * as Dat from 'dat.gui';
 import { Scene, Color, Camera, Vector3 } from 'three';
 import { Flower, Land, Cat, Mop, Cloud, UFO, Tree } from 'objects';
 import { BasicLights } from 'lights';
+import { Road } from 'shaders';
 
-const step = 4e-3 * window.innerWidth;
+const step = 2e-3 * window.innerWidth;
 const obstacleList = ["flower", "UFO", "land", "tree", "cloud"];
 
 const trackPositionList = [
@@ -35,9 +36,9 @@ class SeedScene extends Scene {
         const lights = new BasicLights();
         const cat = new Cat(this);
         const mop = new Mop(this);
-        this.add(lights, cat, mop);
-        console.log(window);
+        const mesh = new Road(this);
 
+        this.add(lights, cat, mop, mesh.mesh);
         // Populate GUI
         this.state.gui.add(this.state, 'rotationSpeed', -5, 5);
         this.state.gui.add(this.state, 'pause');
@@ -45,6 +46,14 @@ class SeedScene extends Scene {
 
     addToUpdateList(object) {
         this.state.updateList.push(object);
+    }
+
+    update(timeStamp) {
+        const { rotationSpeed, updateList } = this.state;
+        for (const obj of updateList) {
+            obj.update();
+        }
+        this.sceneGenerator();
     }
 
     sceneGenerator() {
@@ -77,14 +86,6 @@ class SeedScene extends Scene {
             this.add(obstacle);
             this.addToUpdateList(obstacle);
         }
-    }
-
-    update(timeStamp) {
-        const { rotationSpeed, updateList } = this.state;
-        for (const obj of updateList) {
-            obj.translateX(-0.5);
-        }
-        this.sceneGenerator();
     }
 
     switchTrack(direction) {

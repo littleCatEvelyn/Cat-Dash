@@ -18,6 +18,10 @@ class Cloud extends Group {
             this.add(gltf.scene);
         });
     }
+
+    update() {
+        this.translateX(-0.5);
+    }
 }
 
 export default Cloud;

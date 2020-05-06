@@ -18,6 +18,10 @@ class UFO extends Group {
             this.add(gltf.scene);
         });
     }
+
+    update() {
+        this.translateX(-0.5);
+    }
 }
 
 export default UFO;
