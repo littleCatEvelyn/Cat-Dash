@@ -4,7 +4,7 @@ import { Flower, Land, Cat, Mop, Cloud, UFO, Tree } from 'objects';
 import { BasicLights } from 'lights';
 import { Road } from 'shaders';
 
-const step = 2e-3 * window.innerWidth;
+const step = 2.5e-3 * window.innerWidth;
 const obstacleList = ["flower", "UFO", "land", "tree", "cloud"];
 
 const trackPositionList = [
@@ -36,9 +36,9 @@ class SeedScene extends Scene {
         const lights = new BasicLights();
         const cat = new Cat(this);
         const mop = new Mop(this);
-        const mesh = new Road(this);
+        const road = new Road(this, step).mesh;
 
-        this.add(lights, cat, mop, mesh.mesh);
+        this.add(lights, cat, mop, road);
         // Populate GUI
         this.state.gui.add(this.state, 'rotationSpeed', -5, 5);
         this.state.gui.add(this.state, 'pause');

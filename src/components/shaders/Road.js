@@ -1,4 +1,5 @@
-import { ShaderMaterial, BoxBufferGeometry, Mesh, Clock, Group } from 'three';
+import { ShaderMaterial, BoxBufferGeometry, Mesh, Clock, 
+         Group, PlaneBufferGeometry, DoubleSide } from 'three';
 
 const fragmentShader = `
     uniform float time;
@@ -32,7 +33,7 @@ const vertexShader = `
 `;
 
 class Road extends Group {
-    constructor(parent) {
+    constructor(parent, step) {
         // Call parent Group() constructor
         super();
         this.name = 'road';
@@ -42,11 +43,16 @@ class Road extends Group {
         this.material = new ShaderMaterial( {
             uniforms: this.uniforms,
             vertexShader: vertexShader,
-            fragmentShader: fragmentShader
+            fragmentShader: fragmentShader,
+            side: DoubleSide
         } );
+
+        this.plane = new PlaneBufferGeometry(6 * step, 1e4);
+
         this.geometry = new BoxBufferGeometry( 0.75, 0.75, 0.75 );
-        this.mesh = new Mesh( this.geometry, this.material );
-        this.mesh.position.set(0, 0, 0);
+        this.mesh = new Mesh( this.plane, this.material );
+        this.mesh.position.set(0, -5, 0);
+        this.mesh.rotation.set(Math.PI / 2, 0, Math.PI / 2);
 
         parent.addToUpdateList(this);
     }
