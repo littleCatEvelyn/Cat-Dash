@@ -4,15 +4,9 @@ import { Flower, Land, Cat, Mop, Cloud, UFO,
          Tree, Road, Building } from 'objects';
 import { BasicLights } from 'lights';
 import { BackgroundTexture } from 'textures';
-import { obstacleGenerator } from 'scenes';
+import { obstacleGenerator, sceneGenerator } from 'scenes';
 
 const step = 2.5e-3 * window.innerWidth;
-
-const trackPositionList = [
-                new Vector3(250, 0, -step),
-                new Vector3(250, 0, 0),
-                new Vector3(250, 0, step)
-              ]
 
 class SeedScene extends Scene {
     constructor() {
@@ -40,7 +34,7 @@ class SeedScene extends Scene {
         const road = new Road(this, step).mesh;
         const building = new Building(this);
 
-        this.add(lights, cat, mop, road, building);
+        this.add(lights, cat, mop, road);
 
         // Populate GUI
         this.state.gui.add(this.state, 'pause');
@@ -67,6 +61,8 @@ class SeedScene extends Scene {
         }
         this.state.updateList = newList;
         obstacleGenerator(this);
+        sceneGenerator(this);
+
     }
 
 
