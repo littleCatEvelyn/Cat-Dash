@@ -1,11 +1,12 @@
 import * as Dat from 'dat.gui';
-import { Scene, Color, Camera, Vector3 } from 'three';
-import { Flower, Land, Cat, Mop, Cloud, UFO, Tree } from 'objects';
+import { Scene, Color, Camera, Vector3, Fog} from 'three';
+import { Flower, Land, Cat, Mop, Cloud, UFO, 
+         Tree, Road, Building } from 'objects';
 import { BasicLights } from 'lights';
-import { Road } from 'shaders';
+import { BackgroundTexture } from 'textures';
+import { obstacleGenerator } from 'scenes';
 
 const step = 2.5e-3 * window.innerWidth;
-const obstacleList = ["flower", "UFO", "land", "tree", "cloud"];
 
 const trackPositionList = [
                 new Vector3(250, 0, -step),
@@ -29,14 +30,17 @@ class SeedScene extends Scene {
         };
 
         // Set background to a nice color
-        this.background = new Color(0x152236);
+        this.background = BackgroundTexture;//new Color(0x152236);
+        this.fog = new Fog( 0xa2aab8, 5, 1e4 );
 
         // Add meshes to scene
         const lights = new BasicLights();
         const cat = new Cat(this);
         const mop = new Mop(this);
         const road = new Road(this, step).mesh;
-        this.add(lights, cat, mop, road);
+        const building = new Building(this);
+
+        this.add(lights, cat, mop, road, building);
 
         // Populate GUI
         this.state.gui.add(this.state, 'pause');
@@ -55,46 +59,17 @@ class SeedScene extends Scene {
         const { rotationSpeed, updateList } = this.state;
         for (const obj of updateList) {
             obj.update(timeStamp);
-            if (obj.position.x < -200) {
+            if (obj.position.x < -500) {
                 this.remove(obj);
             } else {
                 newList.push(obj);
             }
         }
         this.state.updateList = newList;
-        this.sceneGenerator();
+        obstacleGenerator(this);
     }
 
-    sceneGenerator() {
-        const doCreatNewObstacle = Math.random() > this.state.probability;
-        if (doCreatNewObstacle) {
-            const numOfObstacles = obstacleList.length;
-            const obstacleTypeId = Math.floor(Math.random() * numOfObstacles);
-            const obstacleName = obstacleList[obstacleTypeId];
-            let obstacle = undefined;
-            switch(obstacleName) {
-                case "flower":
-                    obstacle = new Flower(this);
-                    break;
-                case "UFO":
-                    obstacle = new UFO(this);
-                    break;
-                case "land":
-                    obstacle = new Land(this);
-                    break;
-                case "tree":
-                    obstacle = new Tree(this);
-                    break;
-                case "cloud":
-                    obstacle = new Cloud(this);
-                    break;
-            }
 
-            const trackPosition = trackPositionList[Math.floor(Math.random() * trackPositionList.length)];
-            obstacle.position.set(trackPosition.x, trackPosition.y, trackPosition.z);
-            this.add(obstacle);
-        }
-    }
 
     switchTrack(direction) {
         const { playerList } = this.state;

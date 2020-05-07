@@ -18,7 +18,7 @@ const clock = new Clock(false);
 let timeAccumulator = 0;
 
 // Set up camera
-camera.position.set(-10, 6, 0);
+camera.position.set(-10, 4, 0);
 
 // Set up renderer, canvas, and minor CSS adjustments
 renderer.setPixelRatio(window.devicePixelRatio);

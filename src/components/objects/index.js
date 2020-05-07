@@ -5,3 +5,5 @@ export * from './Mop';
 export * from './Tree';
 export * from './UFO';
 export * from './Cloud';
+export * from './Road';
+export * from './Building';
