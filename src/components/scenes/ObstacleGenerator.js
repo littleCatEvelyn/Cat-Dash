@@ -28,6 +28,7 @@ function obstacleGenerator(scene) {
                 break;
             case "tree":
                 obstacle = new Tree(scene);
+                console.log('jjj')
                 break;
             case "cloud":
                 obstacle = new Cloud(scene);
@@ -36,6 +37,8 @@ function obstacleGenerator(scene) {
 
         const trackPosition = trackPositionList[Math.floor(Math.random() * trackPositionList.length)];
         obstacle.position.set(trackPosition.x, trackPosition.y, trackPosition.z);
+
+        scene.addToObstacleList(obstacle);
         scene.add(obstacle);
     }
 }

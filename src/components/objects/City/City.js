@@ -11,6 +11,7 @@ class City extends Group {
 
         this.name = 'city';
 
+        // the model is fetched from https://poly.google.com/view/2binsxeOBve
         loader.load(MODEL, (gltf) => {       
             gltf.scene.scale.set(8, 8, 8);
             gltf.scene.position.set(0, 30, 0);

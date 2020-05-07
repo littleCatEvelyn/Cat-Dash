@@ -13,6 +13,7 @@ class Mop extends Group {
         this.name = 'mop';
         this.move = 'up';
 
+        // the model is fetched from https://poly.google.com/view/bzCi_ZLQPN4
         const loader = new GLTFLoader();
         loader.load(MODEL, (gltf) => {       
             gltf.scene.scale.set(0.5, 0.5, 0.5);

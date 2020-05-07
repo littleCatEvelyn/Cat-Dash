@@ -13,6 +13,7 @@ class Cat extends Group {
         this.name = 'cat';
         this.move = 'up';
 
+        // the model is fetched from https://poly.google.com/view/4Pp1CY3bC43
         const loader = new GLTFLoader();
         loader.load(MODEL, (gltf) => {       
             gltf.scene.scale.set(1e-2, 1e-2, 1e-2);

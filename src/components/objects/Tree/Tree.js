@@ -11,10 +11,10 @@ class Tree extends Group {
 
         this.name = 'tree';
 
+        // the model is fetched from https://poly.google.com/view/boa81hhHF25
         loader.load(MODEL, (gltf) => {       
-            gltf.scene.scale.set(3, 3, 3);
-            gltf.scene.rotation.set(0, 0, 0);
-            gltf.scene.position.set(0, 0, 5.5);
+            gltf.scene.scale.set(3.2, 3.2, 3.2);
+            gltf.scene.position.set(0, -1.3, 2.5);
             this.add(gltf.scene);
         });
         parent.addToUpdateList(this);

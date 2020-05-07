@@ -11,6 +11,7 @@ class Ship extends Group {
 
         this.name = 'ship';
 
+        // the model is fetched from https://poly.google.com/view/bzRjbJ74JCr
         loader.load(MODEL, (gltf) => {       
             gltf.scene.scale.set(15, 15, 15);
             gltf.scene.rotation.set(0, Math.PI, 0);

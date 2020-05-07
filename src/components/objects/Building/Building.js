@@ -11,6 +11,7 @@ class Building extends Group {
 
         this.name = 'building';
 
+        // the model is fetched from https://poly.google.com/view/dzt483I8sr-
         loader.load(MODEL, (gltf) => {       
             gltf.scene.scale.set(0.4, 0.4, 0.4);
             gltf.scene.position.set(-300, -50, 520);

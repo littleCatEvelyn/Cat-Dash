@@ -11,6 +11,7 @@ class Cloud extends Group {
 
         this.name = 'cloud';
 
+        // the model is fetched from https://poly.google.com/view/5vL346OfNST
         loader.load(MODEL, (gltf) => {       
             gltf.scene.scale.set(1.5e-2, 1.5e-2, 1.5e-2);
             gltf.scene.rotation.set(0, Math.PI / 2, 0);

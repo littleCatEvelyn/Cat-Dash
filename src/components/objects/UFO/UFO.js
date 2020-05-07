@@ -14,6 +14,7 @@ class UFO extends Group {
         this.name = 'ufo';
         this.move = 'left';
 
+        // the model is fetched from https://poly.google.com/view/fojR5i3h_nh
         loader.load(MODEL, (gltf) => {       
             gltf.scene.scale.set(1.5, 1.5, 1.5);
             gltf.scene.rotation.set(0, 0, 0.5);

@@ -1,6 +1,6 @@
 import * as Dat from 'dat.gui';
 import { Scene, Color, Camera, Vector3, Fog} from 'three';
-import { Cat, Mop, Road, Building } from 'objects';
+import { Cat, Mop, Road } from 'objects';
 import { BasicLights } from 'lights';
 import { BackgroundTexture } from 'textures';
 import { obstacleGenerator, sceneGenerator } from 'scenes';
@@ -17,6 +17,7 @@ class SeedScene extends Scene {
             gui: new Dat.GUI(), // Create GUI for scene
             updateList: [],
             playerList: [],
+            obstacleList: [],
             pause: true,
             track: 0,
             probability: 0.99
@@ -46,12 +47,17 @@ class SeedScene extends Scene {
         this.state.playerList.push(object);
     }
 
+    addToObstacleList(object) {
+        this.state.obstacleList.push(object);
+    }
+
     update(timeStamp) {
         const newList = [];
         const { rotationSpeed, updateList } = this.state;
         for (const obj of updateList) {
+            // remove past objects
             obj.update(timeStamp);
-            if (obj.position.x < -500) {
+            if (obj.position.x < -250) {
                 this.remove(obj);
             } else {
                 newList.push(obj);
@@ -60,7 +66,6 @@ class SeedScene extends Scene {
         this.state.updateList = newList;
         obstacleGenerator(this);
         sceneGenerator(this);
-
     }
 
     switchTrack(direction) {
