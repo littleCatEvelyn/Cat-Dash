@@ -90,7 +90,7 @@ class Road extends Group {
         this.uniforms.iTime.value = timeStamp;
 
         // renew road
-        if (LENGTH - Math.abs(this.mesh.position.x) < 0.5 * LENGTH) {
+        if (LENGTH - Math.abs(this.mesh.position.x) < 0.8 * LENGTH) {
             this.parent.remove(this.mesh);
             const plane = new PlaneBufferGeometry(6 * this.step, LENGTH);
             this.mesh = new Mesh(plane, this.material);

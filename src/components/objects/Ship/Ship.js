@@ -12,9 +12,9 @@ class Ship extends Group {
         this.name = 'ship';
 
         loader.load(MODEL, (gltf) => {       
-            gltf.scene.scale.set(10, 10, 10);
+            gltf.scene.scale.set(15, 15, 15);
             gltf.scene.rotation.set(0, Math.PI, 0);
-            gltf.scene.position.set(0, 2, 10);
+            gltf.scene.position.set(0, 7, 10);
             this.add(gltf.scene);
         });
         parent.addToUpdateList(this);

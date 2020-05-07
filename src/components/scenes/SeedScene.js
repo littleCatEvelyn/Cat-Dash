@@ -1,7 +1,6 @@
 import * as Dat from 'dat.gui';
 import { Scene, Color, Camera, Vector3, Fog} from 'three';
-import { Flower, Land, Cat, Mop, Cloud, UFO, 
-         Tree, Road, Building } from 'objects';
+import { Cat, Mop, Road, Building } from 'objects';
 import { BasicLights } from 'lights';
 import { BackgroundTexture } from 'textures';
 import { obstacleGenerator, sceneGenerator } from 'scenes';
@@ -32,7 +31,6 @@ class SeedScene extends Scene {
         const cat = new Cat(this);
         const mop = new Mop(this);
         const road = new Road(this, step).mesh;
-        const building = new Building(this);
 
         this.add(lights, cat, mop, road);
 
@@ -64,8 +62,6 @@ class SeedScene extends Scene {
         sceneGenerator(this);
 
     }
-
-
 
     switchTrack(direction) {
         const { playerList } = this.state;

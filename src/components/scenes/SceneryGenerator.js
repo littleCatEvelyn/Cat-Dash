@@ -1,4 +1,4 @@
-import { Building, City, Rainbow, Ship } from 'objects';
+import { Building, City, Ship } from 'objects';
 import { Vector3 } from 'three';
 
 const objectList = ["building", "city", "ship"];
