@@ -29,14 +29,13 @@ class SeedScene extends Scene {
         };
 
         // Set background to a nice color
-        this.background = new Color(0x7ec0ee);
+        this.background = new Color(0x152236);
 
         // Add meshes to scene
         const lights = new BasicLights();
         const cat = new Cat(this);
         const mop = new Mop(this);
         const road = new Road(this, step).mesh;
-
         this.add(lights, cat, mop, road);
         // Populate GUI
         this.state.gui.add(this.state, 'pause');
@@ -93,13 +92,13 @@ class SeedScene extends Scene {
             case "ArrowDown": console.log('down');break;
             case "ArrowLeft":
                 if (this.state.track != -1) {
-                    playerList.forEach(obj => {obj.translateZ(-step)});
+                    playerList.forEach(obj => {obj.position.z -= step});
                     this.state.track -= 1;
                 }
                 break;
             case "ArrowRight":
                 if (this.state.track != 1) {
-                    playerList.forEach(obj => {obj.translateZ(step)});
+                    playerList.forEach(obj => {obj.position.z += step});
                     this.state.track += 1;
                 }
                 break;

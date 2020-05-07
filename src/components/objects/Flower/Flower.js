@@ -60,7 +60,8 @@ class Flower extends Group {
         // Advance tween animations, if any exist
         TWEEN.update();
 
-        this.translateX(-0.5);
+        this.position.x -= 0.5;
+        
     }
 }
 

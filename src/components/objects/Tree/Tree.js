@@ -20,7 +20,7 @@ class Tree extends Group {
     }
 
     update(timeStamp) {
-        this.translateX(-0.5);
+        this.position.x -= 0.5;
     }
 }
 
