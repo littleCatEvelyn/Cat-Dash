@@ -37,7 +37,7 @@ class SeedScene extends Scene {
         const mop = new Mop(this);
         const road = new Road(this, step).mesh;
         this.add(lights, cat, mop, road);
-        
+
         // Populate GUI
         this.state.gui.add(this.state, 'pause');
     }
@@ -51,10 +51,17 @@ class SeedScene extends Scene {
     }
 
     update(timeStamp) {
+        const newList = [];
         const { rotationSpeed, updateList } = this.state;
         for (const obj of updateList) {
             obj.update(timeStamp);
+            if (obj.position.x < -200) {
+                this.remove(obj);
+            } else {
+                newList.push(obj);
+            }
         }
+        this.state.updateList = newList;
         this.sceneGenerator();
     }
 
