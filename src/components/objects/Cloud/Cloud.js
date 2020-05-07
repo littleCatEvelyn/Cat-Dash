@@ -3,7 +3,7 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import MODEL from './cloud.gltf';
 
 class Cloud extends Group {
-    constructor() {
+    constructor(parent) {
         // Call parent Group() constructor
         super();
 
@@ -17,6 +17,7 @@ class Cloud extends Group {
             gltf.scene.position.set(0, 0.5, 0);
             this.add(gltf.scene);
         });
+        parent.addToUpdateList(this);
     }
 
     update(timeStamp) {

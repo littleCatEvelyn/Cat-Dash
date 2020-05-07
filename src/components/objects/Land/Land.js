@@ -4,19 +4,20 @@ import MODEL from './land.gltf';
 
 const UP_LIMIT = 8;
 const DOWN_LIMIT = -1;
+
 class Land extends Group {
-    constructor() {
+    constructor(parent) {
         // Call parent Group() constructor
         super();
-
-        const loader = new GLTFLoader();
         this.name = 'land';
         this.move = 'up';
 
+        const loader = new GLTFLoader();
         loader.load(MODEL, (gltf) => {
         	gltf.scene.position.set(0, 1, 0.5);
             this.add(gltf.scene);
         });
+        parent.addToUpdateList(this);
     }
 
     update(timeStamp) {

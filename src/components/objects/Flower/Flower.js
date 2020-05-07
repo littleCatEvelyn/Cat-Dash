@@ -4,23 +4,18 @@ import { TWEEN } from 'three/examples/jsm/libs/tween.module.min.js';
 import MODEL from './flower.gltf';
 
 class Flower extends Group {
-    constructor() {
+    constructor(parent) {
         // Call parent Group() constructor
         super();
-
-        // Init state
-        this.state = {
-            twirl: 0,
-        };
-
-        // Load object
-        const loader = new GLTFLoader();
-
         this.name = 'flower';
+
+        const loader = new GLTFLoader();
         loader.load(MODEL, (gltf) => {
             gltf.scene.rotation.set(0, Math.PI / 2, 0);
             this.add(gltf.scene);
         });
+
+        parent.addToUpdateList(this);
     }
 
     update(timeStamp) {

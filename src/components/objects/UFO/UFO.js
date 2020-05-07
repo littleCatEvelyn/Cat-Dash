@@ -3,8 +3,9 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import MODEL from './ufo.gltf';
 
 const LIMIT = 2.5e-3 * window.innerWidth;
+
 class UFO extends Group {
-    constructor() {
+    constructor(parent) {
         // Call parent Group() constructor
         super();
 
@@ -19,6 +20,7 @@ class UFO extends Group {
             gltf.scene.position.set(0, 0.5, 0);
             this.add(gltf.scene);
         });
+        parent.addToUpdateList(this);
     }
 
     update(timeStamp) {

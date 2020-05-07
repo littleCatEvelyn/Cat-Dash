@@ -3,7 +3,7 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import MODEL from './tree.gltf';
 
 class Tree extends Group {
-    constructor() {
+    constructor(parent) {
         // Call parent Group() constructor
         super();
 
@@ -17,6 +17,7 @@ class Tree extends Group {
             gltf.scene.position.set(0, 0, 5.5);
             this.add(gltf.scene);
         });
+        parent.addToUpdateList(this);
     }
 
     update(timeStamp) {

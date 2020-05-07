@@ -37,12 +37,17 @@ class SeedScene extends Scene {
         const mop = new Mop(this);
         const road = new Road(this, step).mesh;
         this.add(lights, cat, mop, road);
+        
         // Populate GUI
         this.state.gui.add(this.state, 'pause');
     }
 
     addToUpdateList(object) {
         this.state.updateList.push(object);
+    }
+
+    addToPlayerList(object) {
+        this.state.playerList.push(object);
     }
 
     update(timeStamp) {
@@ -62,26 +67,25 @@ class SeedScene extends Scene {
             let obstacle = undefined;
             switch(obstacleName) {
                 case "flower":
-                    obstacle = new Flower();
+                    obstacle = new Flower(this);
                     break;
                 case "UFO":
-                    obstacle = new UFO();
+                    obstacle = new UFO(this);
                     break;
                 case "land":
-                    obstacle = new Land();
+                    obstacle = new Land(this);
                     break;
                 case "tree":
-                    obstacle = new Tree();
+                    obstacle = new Tree(this);
                     break;
                 case "cloud":
-                    obstacle = new Cloud();
+                    obstacle = new Cloud(this);
                     break;
             }
 
             const trackPosition = trackPositionList[Math.floor(Math.random() * trackPositionList.length)];
             obstacle.position.set(trackPosition.x, trackPosition.y, trackPosition.z);
             this.add(obstacle);
-            this.addToUpdateList(obstacle);
         }
     }
 
