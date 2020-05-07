@@ -7,3 +7,6 @@ export * from './UFO';
 export * from './Cloud';
 export * from './Road';
 export * from './Building';
+export * from './City';
+export * from './Ship';
+export * from './Rainbow';

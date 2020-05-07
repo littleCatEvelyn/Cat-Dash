@@ -1,7 +1,7 @@
-import { Building} from 'objects';
+import { Building, City, Rainbow, Ship } from 'objects';
 import { Vector3 } from 'three';
 
-const objectList = ["building"];
+const objectList = ["building", "city", "ship"];
 const step = 2.5e-3 * window.innerWidth;
 const trackPositionList = [
 	new Vector3(500, 0, -15*step),
@@ -18,7 +18,12 @@ function sceneGenerator(scene) {
         switch(objectName) {
             case "building":
                 object = new Building(scene);
-                console.log(object);
+                break;
+            case "city":
+                object = new City(scene);
+                break;
+            case "ship":
+                object = new Ship(scene);
                 break;
         }
 
