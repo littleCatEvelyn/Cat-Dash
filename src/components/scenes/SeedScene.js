@@ -8,9 +8,9 @@ const step = 2.5e-3 * window.innerWidth;
 const obstacleList = ["flower", "UFO", "land", "tree", "cloud"];
 
 const trackPositionList = [
-                new Vector3(150, 0, -step),
-                new Vector3(150, 0, 0),
-                new Vector3(150, 0, step)
+                new Vector3(250, 0, -step),
+                new Vector3(250, 0, 0),
+                new Vector3(250, 0, step)
               ]
 
 class SeedScene extends Scene {

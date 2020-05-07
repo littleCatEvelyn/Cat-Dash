@@ -89,12 +89,6 @@ class Road extends Group {
         this.mesh.position.x -= 0.5;
         this.uniforms.iTime.value = timeStamp;
 
-        console.log(this.mesh.position.x);
-        console.log(LENGTH - Math.abs(this.mesh.position.x));
-        let ll = LENGTH;
-        let kk = this.mesh.position.x;
-        let tt = LENGTH - Math.abs(this.mesh.position.x);
-
         // renew road
         if (LENGTH - Math.abs(this.mesh.position.x) < 0.5 * LENGTH) {
             this.parent.remove(this.mesh);

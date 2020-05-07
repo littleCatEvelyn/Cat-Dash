@@ -2,6 +2,7 @@ import { Group } from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import MODEL from './ufo.gltf';
 
+const LIMIT = 2.5e-3 * window.innerWidth;
 class UFO extends Group {
     constructor() {
         // Call parent Group() constructor
@@ -10,6 +11,7 @@ class UFO extends Group {
         const loader = new GLTFLoader();
 
         this.name = 'ufo';
+        this.move = 'left';
 
         loader.load(MODEL, (gltf) => {       
             gltf.scene.scale.set(1.5, 1.5, 1.5);
@@ -21,7 +23,20 @@ class UFO extends Group {
 
     update(timeStamp) {
         this.position.x -= 0.5;
-        
+
+        // move left and right
+        switch(this.move) {
+            case 'left':
+                this.position.z -= 0.1;
+                if (this.position.z <= -1.5 * LIMIT)
+                    this.move = 'right';
+                break;
+            case 'right':
+                this.position.z += 0.1;
+                if (this.position.z >= 1.5 * LIMIT)
+                    this.move = 'left';
+                break;
+        }
     }
 }
 
