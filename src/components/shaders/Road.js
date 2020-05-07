@@ -12,7 +12,7 @@ const fragmentShader = `
 
   // By Daedelus: https://www.shadertoy.com/user/Daedelus
   // license: Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License.
-  #define TIMESCALE 0.25 
+  #define TIMESCALE 0.35 
   #define TILES 8
   #define COLOR 0.7, 1.6, 2.8
 
