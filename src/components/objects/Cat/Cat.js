@@ -2,7 +2,7 @@ import { Group } from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import MODEL from './cat.gltf';
 
-const UP_LIMIT = 0.6;
+const UP_LIMIT = 0.5;
 const DOWN_LIMIT = -0.2;
 
 class Cat extends Group {
