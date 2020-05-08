@@ -8,13 +8,12 @@ class UFO extends Group {
     constructor(parent) {
         // Call parent Group() constructor
         super();
-
-        const loader = new GLTFLoader();
-
         this.name = 'ufo';
         this.move = 'left';
+        this.label = 'obstacle';
 
         // the model is fetched from https://poly.google.com/view/fojR5i3h_nh
+        const loader = new GLTFLoader();
         loader.load(MODEL, (gltf) => {       
             gltf.scene.scale.set(1.5, 1.5, 1.5);
             gltf.scene.rotation.set(0, 0, 0.5);

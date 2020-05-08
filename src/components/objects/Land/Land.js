@@ -11,6 +11,7 @@ class Land extends Group {
         super();
         this.name = 'land';
         this.move = 'up';
+        this.label = 'obstacle';
 
         const loader = new GLTFLoader();
         loader.load(MODEL, (gltf) => {

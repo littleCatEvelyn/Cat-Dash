@@ -6,12 +6,11 @@ class Cloud extends Group {
     constructor(parent) {
         // Call parent Group() constructor
         super();
-
-        const loader = new GLTFLoader();
-
         this.name = 'cloud';
+        this.label = 'obstacle';
 
         // the model is fetched from https://poly.google.com/view/5vL346OfNST
+        const loader = new GLTFLoader();
         loader.load(MODEL, (gltf) => {       
             gltf.scene.scale.set(1.5e-2, 1.5e-2, 1.5e-2);
             gltf.scene.rotation.set(0, Math.PI / 2, 0);

@@ -11,6 +11,7 @@ class Cat extends Group {
         super();
         this.name = 'cat';
         this.move = 'up';
+        this.label = 'player';
 
         // Load GLTF model
         // the model is fetched from https://poly.google.com/view/4Pp1CY3bC43

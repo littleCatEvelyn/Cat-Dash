@@ -1,9 +1,10 @@
 import * as Dat from 'dat.gui';
 import { Scene, Color, Camera, Vector3, Fog} from 'three';
-import { Cat, Mop, Road } from 'objects';
+import { Cat, Mop, Road, Building } from 'objects';
 import { BasicLights } from 'lights';
 import { BackgroundTexture } from 'textures';
-import { obstacleGenerator, sceneGenerator, collisionDetection } from 'scenes';
+import { obstacleGenerator, sceneGenerator, initializeScene, 
+         updateScene } from 'scenes';
 
 const step = 2.5e-3 * window.innerWidth;
 
@@ -17,8 +18,7 @@ class SeedScene extends Scene {
             gui: new Dat.GUI(), // Create GUI for scene
             player: undefined,
             updateList: [],
-            playerList: [],
-            obstacleList: [],
+            playerList: [], // subset of updateList, including obj labeled player
             pause: true,
             track: 0,
             probability: 0.99
@@ -33,43 +33,20 @@ class SeedScene extends Scene {
         const cat = new Cat(this);
         const mop = new Mop(this);
         const road = new Road(this, step).mesh;
+        const building = new Building(this);
 
         this.player = cat;
         this.add(lights, cat, mop, road);
 
+        initializeScene(this);
         // Populate GUI
         this.state.gui.add(this.state, 'pause');
     }
 
-    addToUpdateList(object) {
-        this.state.updateList.push(object);
-    }
-
-    addToPlayerList(object) {
-        this.state.playerList.push(object);
-    }
-
-    addToObstacleList(object) {
-        this.state.obstacleList.push(object);
-    }
-
     update(timeStamp) {
-        const newList = [];
-        const { rotationSpeed, updateList } = this.state;
-        // remove past objects
-        for (const obj of updateList) {
-            obj.update(timeStamp);
-            if (obj.position.x < -250) {
-                this.remove(obj);
-            } else {
-                newList.push(obj);
-            }
-        }
-        this.state.updateList = newList;
-
+        updateScene(timeStamp, this);        
         obstacleGenerator(this);
         sceneGenerator(this);
-        collisionDetection(this);
     }
 
     switchTrack(direction) {
@@ -90,6 +67,14 @@ class SeedScene extends Scene {
                 }
                 break;
         }
+    }
+
+    addToUpdateList(object) {
+        this.state.updateList.push(object);
+    }
+
+    addToPlayerList(object) {
+        this.state.playerList.push(object);
     }
 }
 

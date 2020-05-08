@@ -11,6 +11,7 @@ class Mop extends Group {
         super();
         this.name = 'mop';
         this.move = 'up';
+        this.label = 'player';
 
         // the model is fetched from https://poly.google.com/view/bzCi_ZLQPN4
         const loader = new GLTFLoader();

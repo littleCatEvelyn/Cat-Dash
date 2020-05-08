@@ -8,6 +8,7 @@ class Flower extends Group {
         // Call parent Group() constructor
         super();
         this.name = 'flower';
+        this.label = 'obstacle';
 
         const loader = new GLTFLoader();
         loader.load(MODEL, (gltf) => {
