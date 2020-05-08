@@ -32,7 +32,7 @@ class Cat extends Group {
 
     movePlayer(distance) {
         const moveDis = new TWEEN.Tween(this.position)
-            .to({ z: this.position.z + distance }, 300)
+            .to({ z: this.position.z + distance }, 250)
             .easing(TWEEN.Easing.Quadratic.Out);
         moveDis.start();
     }

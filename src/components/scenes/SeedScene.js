@@ -1,6 +1,5 @@
-import * as Dat from 'dat.gui';
 import { Scene, Color, Camera, Vector3, Fog} from 'three';
-import { Cat, Mop, Road, Building } from 'objects';
+import { Cat, Mop, Road, Building, Board } from 'objects';
 import { BasicLights } from 'lights';
 import { BackgroundTexture } from 'textures';
 import { obstacleGenerator, sceneGenerator, initializeScene, 
@@ -15,7 +14,6 @@ class SeedScene extends Scene {
 
         // Init state
         this.state = {
-            gui: new Dat.GUI(), // Create GUI for scene
             player: undefined,
             updateList: [],
             playerList: [], // subset of updateList, including obj labeled player
@@ -33,14 +31,12 @@ class SeedScene extends Scene {
         const cat = new Cat(this);
         const mop = new Mop(this);
         const road = new Road(this, step).mesh;
-        const building = new Building(this);
+        const board = new Board(this)
 
         this.player = cat;
-        this.add(lights, cat, mop, road);
+        this.add(lights, cat, mop, road, board);
 
         initializeScene(this);
-        // Populate GUI
-        this.state.gui.add(this.state, 'pause');
     }
 
     update(timeStamp) {
@@ -53,7 +49,7 @@ class SeedScene extends Scene {
         const { playerList } = this.state;
         switch(direction) {
             case "ArrowUp": console.log("up");break;
-            case "ArrowDown": console.log('down');break;
+            case "ArrowDown": break;
             case "ArrowLeft":
                 if (this.state.track != -1) {
                     playerList.forEach(obj => {obj.movePlayer(-step);});

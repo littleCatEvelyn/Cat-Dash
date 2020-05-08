@@ -13,10 +13,6 @@ function updateUpdateList(timeStamp, scene) {
             // update updateList
             newUpdateLst.push(obj);
             switch(obj.label) {
-                case 'scene':
-                    break;
-                case 'player': // playerList do not need update
-                    break;
                 case 'obstacle': 
                     // detect collision
                     collisionDetection(scene, obj);

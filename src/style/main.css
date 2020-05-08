@@ -1,3 +1,7 @@
+div {
+	transform: skew(90deg);
+}
+
 h1 {
 	position: absolute;
 	text-align: center;
@@ -5,4 +9,5 @@ h1 {
 	z-index: 1;
 	color: #ffffff;
 	width: 100%;
+	-ms-transform: rotate(-90deg);
 }

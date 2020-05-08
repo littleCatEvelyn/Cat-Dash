@@ -33,13 +33,8 @@ console.log(scene);
 const controls = new OrbitControls(camera, canvas);
 controls.enableKeys = false;
 controls.target.set(8, 0, 0);
-// // // // controls.enableDamping = true;
-// // // // controls.enablePan = false;
-// // // // controls.minDistance = 0;
-// // // // controls.maxDistance = 16;
-// controls.target.set(new Vector3(0, 0, 0));
+controls.enableDamping = true;
 controls.update();
-
 
 // Render loop
 const onAnimationFrameHandler = (timeStamp) => {
@@ -76,12 +71,14 @@ window.addEventListener('resize', windowResizeHandler, false);
 let isKeyboardLocked = false;
 window.addEventListener('keydown', event => {
     const key = event.key;
+    if (key==' ')
+        scene.state.pause = !scene.state.pause;
     if (!scene.state.pause) {
         if (isKeyboardLocked) {
             return;
         }
         isKeyboardLocked = true;
         scene.switchTrack(event.key);
-        setTimeout( function(){ isKeyboardLocked = false; }, 300); 
+        setTimeout( function(){ isKeyboardLocked = false; }, 250); 
     } 
 })
