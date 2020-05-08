@@ -1,4 +1,4 @@
-import { Group } from 'three';
+import { Group, Box3 } from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import MODEL from './mop.gltf';
 
@@ -9,7 +9,6 @@ class Mop extends Group {
     constructor(parent) {
         // Call parent Group() constructor
         super();
-
         this.name = 'mop';
         this.move = 'up';
 
@@ -21,6 +20,8 @@ class Mop extends Group {
             gltf.scene.position.set(-2.2, -0.25, 0);
             this.add(gltf.scene);
         });
+
+        this.boundingBox = new Box3;
         parent.addToUpdateList(this);
         parent.addToPlayerList(this);
     }
@@ -38,6 +39,8 @@ class Mop extends Group {
                     this.move = 'up';
                 break;
         }
+
+        this.boundingBox.setFromObject(this);
     }
 }
 

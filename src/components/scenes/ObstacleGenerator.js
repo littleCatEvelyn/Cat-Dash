@@ -28,7 +28,6 @@ function obstacleGenerator(scene) {
                 break;
             case "tree":
                 obstacle = new Tree(scene);
-                console.log('jjj')
                 break;
             case "cloud":
                 obstacle = new Cloud(scene);

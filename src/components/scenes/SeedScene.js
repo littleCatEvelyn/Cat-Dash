@@ -3,7 +3,7 @@ import { Scene, Color, Camera, Vector3, Fog} from 'three';
 import { Cat, Mop, Road } from 'objects';
 import { BasicLights } from 'lights';
 import { BackgroundTexture } from 'textures';
-import { obstacleGenerator, sceneGenerator } from 'scenes';
+import { obstacleGenerator, sceneGenerator, collisionDetection } from 'scenes';
 
 const step = 2.5e-3 * window.innerWidth;
 
@@ -15,6 +15,7 @@ class SeedScene extends Scene {
         // Init state
         this.state = {
             gui: new Dat.GUI(), // Create GUI for scene
+            player: undefined,
             updateList: [],
             playerList: [],
             obstacleList: [],
@@ -33,6 +34,7 @@ class SeedScene extends Scene {
         const mop = new Mop(this);
         const road = new Road(this, step).mesh;
 
+        this.player = cat;
         this.add(lights, cat, mop, road);
 
         // Populate GUI
@@ -54,8 +56,8 @@ class SeedScene extends Scene {
     update(timeStamp) {
         const newList = [];
         const { rotationSpeed, updateList } = this.state;
+        // remove past objects
         for (const obj of updateList) {
-            // remove past objects
             obj.update(timeStamp);
             if (obj.position.x < -250) {
                 this.remove(obj);
@@ -64,8 +66,10 @@ class SeedScene extends Scene {
             }
         }
         this.state.updateList = newList;
+
         obstacleGenerator(this);
         sceneGenerator(this);
+        collisionDetection(this);
     }
 
     switchTrack(direction) {

@@ -1,4 +1,4 @@
-import { Group } from 'three';
+import { Group, Box3 } from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { TWEEN } from 'three/examples/jsm/libs/tween.module.min.js';
 import MODEL from './flower.gltf';
@@ -15,12 +15,15 @@ class Flower extends Group {
             this.add(gltf.scene);
         });
 
+        this.boundingBox = new Box3;
         parent.addToUpdateList(this);
     }
 
     update(timeStamp) {
         this.rotation.y += Math.PI / 20;
         this.position.x -= 0.5;
+
+        this.boundingBox.setFromObject(this);
     }
 }
 

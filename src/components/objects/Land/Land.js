@@ -1,4 +1,4 @@
-import { Group } from 'three';
+import { Group, Box3 } from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import MODEL from './land.gltf';
 
@@ -17,12 +17,13 @@ class Land extends Group {
         	gltf.scene.position.set(0, 1, 0.5);
             this.add(gltf.scene);
         });
+
+        this.boundingBox = new Box3;
         parent.addToUpdateList(this);
     }
 
     update(timeStamp) {
         this.position.x -= 0.5;
-
         // move up and down
         switch(this.move) {
             case 'up':
@@ -36,6 +37,8 @@ class Land extends Group {
                     this.move = 'up';
                 break;
         }
+
+        this.boundingBox.setFromObject(this);
     }
 }
 

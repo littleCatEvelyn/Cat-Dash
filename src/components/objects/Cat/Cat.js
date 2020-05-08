@@ -1,4 +1,4 @@
-import { Group } from 'three';
+import { Group, Box3 } from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import MODEL from './cat.gltf';
 
@@ -9,10 +9,10 @@ class Cat extends Group {
     constructor(parent) {
         // Call parent Group() constructor
         super();
-
         this.name = 'cat';
         this.move = 'up';
 
+        // Load GLTF model
         // the model is fetched from https://poly.google.com/view/4Pp1CY3bC43
         const loader = new GLTFLoader();
         loader.load(MODEL, (gltf) => {       
@@ -21,6 +21,8 @@ class Cat extends Group {
             gltf.scene.position.set(0, 0.32, 0);
             this.add(gltf.scene);
         });
+
+        this.boundingBox = new Box3;
         parent.addToUpdateList(this);
         parent.addToPlayerList(this);
     }
@@ -38,6 +40,8 @@ class Cat extends Group {
                     this.move = 'up';
                 break;
         }
+
+        this.boundingBox.setFromObject(this);
     }
 }
 

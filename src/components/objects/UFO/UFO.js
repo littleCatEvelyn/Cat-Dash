@@ -1,4 +1,4 @@
-import { Group } from 'three';
+import { Group, Box3 } from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import MODEL from './ufo.gltf';
 
@@ -21,6 +21,8 @@ class UFO extends Group {
             gltf.scene.position.set(0, 0.5, 0);
             this.add(gltf.scene);
         });
+
+        this.boundingBox = new Box3;
         parent.addToUpdateList(this);
     }
 
@@ -40,6 +42,8 @@ class UFO extends Group {
                     this.move = 'left';
                 break;
         }
+
+        this.boundingBox.setFromObject(this);
     }
 }
 
