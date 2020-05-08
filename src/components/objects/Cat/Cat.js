@@ -1,6 +1,8 @@
 import { Group, Box3 } from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import MODEL from './cat.gltf';
+import { TWEEN } from 'three/examples/jsm/libs/tween.module.min.js';
+
 
 const UP_LIMIT = 0.5;
 const DOWN_LIMIT = -0.2;
@@ -28,6 +30,13 @@ class Cat extends Group {
         parent.addToPlayerList(this);
     }
 
+    movePlayer(distance) {
+        const moveDis = new TWEEN.Tween(this.position)
+            .to({ z: this.position.z + distance }, 300)
+            .easing(TWEEN.Easing.Quadratic.Out);
+        moveDis.start();
+    }
+
     update(timeStamp) {
         switch(this.move) {
             case 'up':
@@ -43,6 +52,7 @@ class Cat extends Group {
         }
 
         this.boundingBox.setFromObject(this);
+        TWEEN.update();
     }
 }
 

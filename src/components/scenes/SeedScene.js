@@ -56,13 +56,13 @@ class SeedScene extends Scene {
             case "ArrowDown": console.log('down');break;
             case "ArrowLeft":
                 if (this.state.track != -1) {
-                    playerList.forEach(obj => {obj.position.z -= step});
+                    playerList.forEach(obj => {obj.movePlayer(-step);});
                     this.state.track -= 1;
                 }
                 break;
             case "ArrowRight":
                 if (this.state.track != 1) {
-                    playerList.forEach(obj => {obj.position.z += step});
+                    playerList.forEach(obj => {obj.movePlayer(step)});
                     this.state.track += 1;
                 }
                 break;
