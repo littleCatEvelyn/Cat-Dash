@@ -73,9 +73,15 @@ const windowResizeHandler = () => {
 windowResizeHandler();
 window.addEventListener('resize', windowResizeHandler, false);
 
+let isKeyboardLocked = false;
 window.addEventListener('keydown', event => {
     const key = event.key;
     if (!scene.state.pause) {
+        if (isKeyboardLocked) {
+            return;
+        }
+        isKeyboardLocked = true;
         scene.switchTrack(event.key);
+        setTimeout( function(){ isKeyboardLocked = false; }, 300); 
     } 
 })
