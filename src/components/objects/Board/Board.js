@@ -9,7 +9,7 @@ class Board extends Group {
         this.name = 'board';
         this.label = 'board';
 
-        // the model is fetched from https://poly.google.com/view/dzt483I8sr-
+        // the model is fetched from https://poly.google.com/view/fZSup9A5R6t
         const loader = new GLTFLoader();
         loader.load(MODEL, (gltf) => {       
             gltf.scene.scale.set(2.3, 2.3, 2.3);
