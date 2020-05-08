@@ -1,0 +1,8 @@
+h1 {
+	position: absolute;
+	text-align: center;
+	margin: 0;
+	z-index: 1;
+	color: #f39f49;
+	width: 100%;
+}

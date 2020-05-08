@@ -1,6 +1,7 @@
 const path = require('path');
 const pkg = require('./package.json');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 const buildPath = './build/';
 
 module.exports = {
@@ -50,6 +51,13 @@ module.exports = {
         },
     },
     plugins: [
-        new HtmlWebpackPlugin({ title: pkg.title, favicon: 'src/favicon.ico' }),
+        new HtmlWebpackPlugin({ title: pkg.title, favicon: 'src/favicon.ico', template: 'src/index.ejs', }),
+        new CopyPlugin([
+            {
+                from: './src/style/main.css',
+                to: 'main.css',
+            },
+        ]),
     ],
+
 };
