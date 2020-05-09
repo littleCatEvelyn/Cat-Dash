@@ -1,1 +1,7 @@
-<!doctype html><html><head><meta charset="utf-8"/><title>Cat Dash</title><link rel="stylesheet" href="main.css"/><link rel="shortcut icon" href="/Cat-Dash/favicon.ico"></head><body><p>Score <span id="score">0</span></p><script src="/Cat-Dash/main.86fe9aa4f000a0c50b94.js"></script></body></html>
+<!doctype html><html><head><meta charset="utf-8"/><title>Cat Dash</title><link rel="stylesheet" href="main.css"/><link rel="shortcut icon" href="/Cat-Dash/favicon.ico"></head><body><div id="start"><img id="gif" src="loading.gif"></div><p id="game"><span id="text">Score</span> <span id="score">0</span></p><script src="/Cat-Dash/main.bd2ce065acf015f8711c.js"></script></body><script>setTimeout(loading, 1800);
+    	function loading() {
+            var game = document.getElementById("game");
+            var start = document.getElementById("start");
+  			start.style.display = 'none';
+  			game.style.display = 'block';
+		}</script></html>
