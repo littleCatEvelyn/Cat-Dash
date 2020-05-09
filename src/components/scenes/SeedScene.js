@@ -1,6 +1,6 @@
 import { Scene, Color, Camera, Vector3, Fog, AudioListener, 
          Audio, AudioLoader } from 'three';
-import { Cat, Mop, Road, Building, Title } from 'objects';
+import { Cat, Mop, Road, Building, GenerateTitle } from 'objects';
 import { BasicLights } from 'lights';
 import { BackgroundTexture } from 'textures';
 import { generateObstacle, generateScene, initializeScene,
@@ -15,7 +15,6 @@ class SeedScene extends Scene {
 
         // Init state
         this.state = {
-            player: undefined,
             updateList: [],
             playerList: [], // subset of updateList, including obj labeled player
             pause: true,
@@ -23,11 +22,11 @@ class SeedScene extends Scene {
             probability: 0.99
         };
 
-        this.title = undefined;
+        // setup audio
         var listener = new AudioListener();
-        // camera.add( listener );
         var sound = new Audio( listener );
         var audioLoader = new AudioLoader();
+
         // the audio source comes from https://music.163.com/#/song?id=223339
         audioLoader.load( 'meow.mp3', function( buffer ) {
             sound.setBuffer( buffer );
@@ -39,14 +38,16 @@ class SeedScene extends Scene {
         this.meow = sound;
 
         // Set background to a nice color
-        this.background = BackgroundTexture;//new Color(0x152236);
+        this.background = BackgroundTexture;
         this.fog = new Fog( 0xa2aab8, 5, 1e4 );
+
         // Add meshes to scene
         const lights = new BasicLights();
         const cat = new Cat(this);
         const mop = new Mop(this);
         const road = new Road(this, step).mesh;
-        Title(this);
+        GenerateTitle(this);
+
         this.player = cat;
         this.add(lights, cat, mop, road);
         initializeScene(this);

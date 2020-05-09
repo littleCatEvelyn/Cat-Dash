@@ -57,12 +57,10 @@ const onAnimationFrameHandler = (timeStamp) => {
     controls.update();
     renderer.render(scene, camera);
     let currentState = getGameState();
-    if (scene.state.pause) {
+    if (scene.state.pause || currentState == 'end') {
         if (clock.running) {
             timeAccumulator += clock.getElapsedTime();
             clock.stop();
-            console.log(timeAccumulator);
-            console.log(scene);
         }
         if (sound.isPlaying) {
             sound.pause();

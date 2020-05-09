@@ -1,1 +1,1 @@
-export { default as Title } from './Title.js';
+export { default as GenerateTitle } from './Title.js';
