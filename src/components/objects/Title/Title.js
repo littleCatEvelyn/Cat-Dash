@@ -5,7 +5,7 @@ function Title(scene) {
     var loader = new FontLoader();
     loader.load('font.json', function(font) {
         var material = new MeshLambertMaterial({
-            color: 0xffff00
+            color: 0xf7dd19
         });
 
         // game start page signs
@@ -49,12 +49,17 @@ function Title(scene) {
         // press to start sign
         var geometry3 = new TextGeometry("Press Space to Start", {
             font: font,
-            size: 75,
+            size: 60,
             height: 5,
+            curveSegments: 12,
+            bevelEnabled: true,
+            bevelThickness: 1,
+            bevelSize: 1,
+            bevelSegments: 2
         });
         
         var mesh3 = new Mesh(geometry3, material);
-        mesh3.position.set(15, 1.5, -4.3);
+        mesh3.position.set(15, 1.5, -3.5);
         mesh3.rotation.set(0, Math.PI * 1.5, 0);
         mesh3.scale.multiplyScalar(0.01)
         mesh3.castShadow = true;
@@ -63,12 +68,17 @@ function Title(scene) {
         // press to start sign
         var geometry4 = new TextGeometry("Click to Restart", {
             font: font,
-            size: 75,
+            size: 60,
             height: 5,
+            curveSegments: 12,
+            bevelEnabled: true,
+            bevelThickness: 1,
+            bevelSize: 1,
+            bevelSegments: 2
         });
         
         var mesh4 = new Mesh(geometry4, material);
-        mesh4.position.set(15, 1.5, -4.3);
+        mesh4.position.set(15, 1.5, -3.3);
         mesh4.rotation.set(0, Math.PI * 1.5, 0);
         mesh4.scale.multiplyScalar(0.01)
         mesh4.castShadow = true;

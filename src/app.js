@@ -10,7 +10,7 @@ import { WebGLRenderer, PerspectiveCamera, Vector3, Clock,
          AudioListener, Audio, AudioLoader } from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import { MainScene } from 'scenes';
-import { getNumOfFlower, getGameState, setGameState } from 'utils'
+import { getNumOfFlower, setNumOfFlower, getGameState, setGameState } from 'utils'
 
 // Initialize core ThreeJS components
 let scene = new MainScene();
@@ -114,6 +114,9 @@ window.addEventListener('click', event => {
     game.style.display = 'none';
 
     scene = new MainScene();
+    timeAccumulator = 0;
+    setNumOfFlower(0);
+    document.getElementById('score').innerHTML = 0;
 
     var start = document.getElementById("start");
     start.style.display = 'block';
