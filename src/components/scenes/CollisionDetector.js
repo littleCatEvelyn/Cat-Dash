@@ -6,6 +6,7 @@ function detectCollision(scene, obstacle) {
         	case 'flower': 
         		scene.remove(obstacle);
                 addToNumOfFlower(1);
+                scene.meow.play();
         		break;
         	case 'land':
         		scene.state.pause = true;

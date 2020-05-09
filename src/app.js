@@ -6,7 +6,8 @@
  * handles window resizes.
  *
  */
-import { WebGLRenderer, PerspectiveCamera, Vector3, Clock } from 'three';
+import { WebGLRenderer, PerspectiveCamera, Vector3, Clock,
+         AudioListener, Audio, AudioLoader } from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import { SeedScene } from 'scenes';
 import { getNumOfFlower } from 'utils'
@@ -20,6 +21,19 @@ let timeAccumulator = 0;
 
 // Set up camera
 camera.position.set(-10, 4, 0);
+
+// Load audio
+var listener = new AudioListener();
+camera.add( listener );
+var sound = new Audio( listener );
+var audioLoader = new AudioLoader();
+// the audio source comes from https://music.163.com/#/song?id=223339
+audioLoader.load( 'backgroundMusic.mp3', function( buffer ) {
+    sound.setBuffer( buffer );
+    sound.setLoop( true );
+    sound.setVolume( 0.5 );
+    sound.pause();
+});
 
 // Set up renderer, canvas, and minor CSS adjustments
 renderer.setPixelRatio(window.devicePixelRatio);
@@ -47,9 +61,15 @@ const onAnimationFrameHandler = (timeStamp) => {
             console.log(timeAccumulator);
             console.log(scene);
         }
+        if (sound.isPlaying) {
+            sound.pause();
+        }
     } else {
         if (!clock.running){
             clock.start();
+        }
+        if (!sound.isPlaying) {
+            sound.play();
         }
         scene.update && scene.update(timeStamp); 
         document.getElementById('score').innerHTML =
