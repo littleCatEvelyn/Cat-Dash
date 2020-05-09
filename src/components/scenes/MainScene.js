@@ -1,18 +1,24 @@
 import { Scene, Color, Camera, Vector3, Fog, AudioListener, 
          Audio, AudioLoader } from 'three';
-import { Cat, Mop, Road, Building, GenerateTitle } from 'objects';
+import { Cat, Mop, Road } from 'objects';
 import { BasicLights } from 'lights';
 import { BackgroundTexture } from 'textures';
 import { generateObstacle, generateScene, initializeScene,
          updateScene } from 'functions';
+import { StartScene } from 'scenes';
 
-const step = 2.5e-3 * window.innerWidth;
+const step = 3e-3 * window.innerWidth;
 
-class SeedScene extends Scene {
+const trackPositionList = [
+    new Vector3(250, 0, -step),
+    new Vector3(250, 0, 0),
+    new Vector3(250, 0, step)
+]
+
+class MainScene extends Scene {
     constructor() {
         // Call parent Scene() constructor
         super();
-
         // Init state
         this.state = {
             updateList: [],
@@ -21,6 +27,9 @@ class SeedScene extends Scene {
             track: 0,
             probability: 0.99
         };
+
+        this.startScene = new StartScene();
+        this.add(this.startScene);
 
         // setup audio
         var listener = new AudioListener();
@@ -46,7 +55,6 @@ class SeedScene extends Scene {
         const cat = new Cat(this);
         const mop = new Mop(this);
         const road = new Road(this, step).mesh;
-        GenerateTitle(this);
 
         this.player = cat;
         this.add(lights, cat, mop, road);
@@ -88,4 +96,4 @@ class SeedScene extends Scene {
     }
 }
 
-export default SeedScene;
+export default MainScene;

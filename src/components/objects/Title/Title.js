@@ -4,6 +4,11 @@ import { MeshBasicMaterial, Texture, DoubleSide, Mesh, PlaneGeometry,
 function Title(scene) {
     var loader = new FontLoader();
     loader.load('font.json', function(font) {
+        var material = new MeshLambertMaterial({
+            color: 0xffff00
+        });
+
+        // game start page signs
         var geometry1 = new TextGeometry("CAT   DASH", {
             font: font,
             size: 250,
@@ -15,6 +20,14 @@ function Title(scene) {
             bevelSegments: 5
         });
 
+        var mesh1 = new Mesh(geometry1, material);
+        mesh1.position.set(15, 5, -8);
+        mesh1.rotation.set(0, Math.PI * 1.5, 0);
+        mesh1.scale.multiplyScalar(0.01)
+        mesh1.castShadow = true;
+        scene.add(mesh1);
+
+        // game over sign
         var geometry2 = new TextGeometry("Game  Over", {
             font: font,
             size: 250,
@@ -25,27 +38,41 @@ function Title(scene) {
             bevelSize: 9,
             bevelSegments: 5
         });
-
-        var material = new MeshLambertMaterial({
-            color: 0xffff00
-        });
-
-        var mesh1 = new Mesh(geometry1, material);
-        mesh1.position.set(15, 5, -8);
-        mesh1.rotation.set(0, Math.PI * 1.5, 0);
-        mesh1.scale.multiplyScalar(0.01)
-        mesh1.castShadow = true;
-        mesh1.name = 'Title';
-        scene.add(mesh1);
-        scene.title = mesh1;
-
+        
         var mesh2 = new Mesh(geometry2, material);
         mesh2.position.set(15, 5, -8);
         mesh2.rotation.set(0, Math.PI * 1.5, 0);
         mesh2.scale.multiplyScalar(0.01)
         mesh2.castShadow = true;
-        mesh2.name = 'Title';
         scene.end = mesh2;
+
+        // press to start sign
+        var geometry3 = new TextGeometry("Press Space to Start", {
+            font: font,
+            size: 75,
+            height: 5,
+        });
+        
+        var mesh3 = new Mesh(geometry3, material);
+        mesh3.position.set(15, 1.5, -4.3);
+        mesh3.rotation.set(0, Math.PI * 1.5, 0);
+        mesh3.scale.multiplyScalar(0.01)
+        mesh3.castShadow = true;
+        scene.add(mesh3);
+
+        // press to start sign
+        var geometry4 = new TextGeometry("Click to Restart", {
+            font: font,
+            size: 75,
+            height: 5,
+        });
+        
+        var mesh4 = new Mesh(geometry4, material);
+        mesh4.position.set(15, 1.5, -4.3);
+        mesh4.rotation.set(0, Math.PI * 1.5, 0);
+        mesh4.scale.multiplyScalar(0.01)
+        mesh4.castShadow = true;
+        scene.restart = mesh4;
     });
 }
 

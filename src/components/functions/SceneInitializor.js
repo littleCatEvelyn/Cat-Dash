@@ -1,7 +1,7 @@
 import { Building, City, Ship } from 'objects';
 import { Vector3 } from 'three';
 
-const objectList = ["city", "ship"];
+const objectList = ["city", "ship", "building"];
 const step = 2.5e-3 * window.innerWidth;
 const trackPositionList = [
     new Vector3(0, 0, -15*step),

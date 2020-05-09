@@ -9,17 +9,15 @@
 import { WebGLRenderer, PerspectiveCamera, Vector3, Clock,
          AudioListener, Audio, AudioLoader } from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
-import { SeedScene } from 'scenes';
+import { MainScene } from 'scenes';
 import { getNumOfFlower, getGameState, setGameState } from 'utils'
 
 // Initialize core ThreeJS components
-const scene = new SeedScene();
+let scene = new MainScene();
 const camera = new PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 10000);
 const renderer = new WebGLRenderer({ antialias: true });
 const clock = new Clock(false);
 let timeAccumulator = 0;
-
-console.log(scene);
 
 // Set up camera
 camera.position.set(-10, 4, 0);
@@ -73,7 +71,7 @@ const onAnimationFrameHandler = (timeStamp) => {
             sound.play();
         }
         if (getGameState() == 'before') {
-            scene.remove(scene.title);
+            scene.remove(scene.startScene);
             setGameState('on progress');
         }
         scene.update && scene.update(timeStamp); 
@@ -107,4 +105,18 @@ window.addEventListener('keydown', event => {
         scene.switchTrack(event.key);
         setTimeout( function(){ isKeyboardLocked = false; }, 250); 
     } 
+})
+
+window.addEventListener('click', event => {
+    if (getGameState() != 'end')
+        return;
+    var game = document.getElementById("game");
+    game.style.display = 'none';
+
+    scene = new MainScene();
+
+    var start = document.getElementById("start");
+    start.style.display = 'block';
+    setGameState('before');
+    setTimeout(loading, 1800);
 })

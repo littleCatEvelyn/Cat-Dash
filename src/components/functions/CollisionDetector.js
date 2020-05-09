@@ -11,17 +11,20 @@ function detectCollision(scene, obstacle) {
         	case 'land':
         		scene.state.pause = true;
                 setGameState('end');
-                scene.add(scene.end);
+                scene.add(scene.startScene.end);
+                scene.add(scene.startScene.restart);
         		break;
         	case 'ufo':
         		scene.state.pause = true;
                 setGameState('end');
-                scene.add(scene.end);
+                scene.add(scene.startScene.end);
+                scene.add(scene.startScene.restart);
         		break;
         	case 'tree':
         		scene.state.pause = true;
                 setGameState('end');
-                scene.add(scene.end);
+                scene.add(scene.startScene.end);
+                scene.add(scene.startScene.restart);
         		break;
         }
     }

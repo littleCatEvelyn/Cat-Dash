@@ -68,6 +68,14 @@ module.exports = {
                 to: 'font.ttf',
             },
             {
+                from: './src/style/black.jpg',
+                to: 'black.jpg',
+            },
+            {
+                from: './src/style/loading.gif',
+                to: 'loading.gif',
+            },
+            {
                 from: './src/audio/backgroundMusic.mp3',
                 to: 'backgroundMusic.mp3',
             },

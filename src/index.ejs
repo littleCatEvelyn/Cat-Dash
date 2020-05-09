@@ -6,6 +6,17 @@
         <link rel="stylesheet" type="text/css" href="main.css" />
     </head>
     <body>
-    	<p>Score <span id='score'>0</span></p>
+    	<div id='start'><img id="gif" src='loading.gif'></div>
+    	<p id = 'game'><span id='text'>Score</span> <span id='score'>0</span></p>
     </body>
+
+    <script type="text/javascript">
+    	setTimeout(loading, 1800);
+    	function loading() {
+            var game = document.getElementById("game");
+            var start = document.getElementById("start");
+  			start.style.display = 'none';
+  			game.style.display = 'block';
+		}
+	</script>
 </html>

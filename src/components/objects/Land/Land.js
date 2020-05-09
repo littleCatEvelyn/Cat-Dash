@@ -17,8 +17,8 @@ class Land extends Group {
 
         const loader = new GLTFLoader();
         loader.load(MODEL, (gltf) => {
-            gltf.scene.sacle.set(
-                1, window.innerHeight / originalHeight, window.innerWidth / originalWidth
+            gltf.scene.scale.set(
+                1, 1 * window.innerHeight / originalHeight, 1 * window.innerWidth / originalWidth
             );
         	gltf.scene.position.set(0, 1, 0.5);
             this.add(gltf.scene);

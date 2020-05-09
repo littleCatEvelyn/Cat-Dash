@@ -16,3 +16,32 @@ p {
 	-webkit-text-stroke: 0.8px #9e64e3; 
 }
 
+div {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	left: 0 !important;
+	top: 0 !important;
+	z-index: 1;
+	background-image: url("black.jpg");
+}
+
+img {
+	margin: auto;
+	margin-top: 200px;
+	z-index: 1;
+}
+
+#start {
+	position: absolute;
+	top: 350px;
+	width: 100%;
+	text-align: center;
+	color: #ffff00;
+	font-size: 50px;;
+}
+
+#game {
+	display: none;
+}
+
