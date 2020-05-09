@@ -1,11 +1,10 @@
 import { Scene, Color, Camera, Vector3, Fog, AudioListener, 
          Audio, AudioLoader } from 'three';
-import { Cat, Mop, Road, Building } from 'objects';
+import { Cat, Mop, Road, Building, Title } from 'objects';
 import { BasicLights } from 'lights';
 import { BackgroundTexture } from 'textures';
 import { generateObstacle, generateScene, initializeScene,
          updateScene } from 'scenes';
-import { getGameState, setGameState } from 'utils';
 
 const step = 2.5e-3 * window.innerWidth;
 
@@ -24,6 +23,7 @@ class SeedScene extends Scene {
             probability: 0.99
         };
 
+        this.title = undefined;
         var listener = new AudioListener();
         // camera.add( listener );
         var sound = new Audio( listener );
@@ -38,7 +38,6 @@ class SeedScene extends Scene {
 
         this.meow = sound;
 
-
         // Set background to a nice color
         this.background = BackgroundTexture;//new Color(0x152236);
         this.fog = new Fog( 0xa2aab8, 5, 1e4 );
@@ -47,7 +46,7 @@ class SeedScene extends Scene {
         const cat = new Cat(this);
         const mop = new Mop(this);
         const road = new Road(this, step).mesh;
-
+        Title(this);
         this.player = cat;
         this.add(lights, cat, mop, road);
         initializeScene(this);

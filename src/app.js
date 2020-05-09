@@ -10,7 +10,7 @@ import { WebGLRenderer, PerspectiveCamera, Vector3, Clock,
          AudioListener, Audio, AudioLoader } from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import { SeedScene } from 'scenes';
-import { getNumOfFlower } from 'utils'
+import { getNumOfFlower, getGameState, setGameState } from 'utils'
 
 // Initialize core ThreeJS components
 const scene = new SeedScene();
@@ -18,6 +18,8 @@ const camera = new PerspectiveCamera(45, window.innerWidth / window.innerHeight,
 const renderer = new WebGLRenderer({ antialias: true });
 const clock = new Clock(false);
 let timeAccumulator = 0;
+
+console.log(scene);
 
 // Set up camera
 camera.position.set(-10, 4, 0);
@@ -54,6 +56,7 @@ controls.update();
 const onAnimationFrameHandler = (timeStamp) => {
     controls.update();
     renderer.render(scene, camera);
+    let currentState = getGameState();
     if (scene.state.pause) {
         if (clock.running) {
             timeAccumulator += clock.getElapsedTime();
@@ -70,6 +73,10 @@ const onAnimationFrameHandler = (timeStamp) => {
         }
         if (!sound.isPlaying) {
             sound.play();
+        }
+        if (getGameState() == 'before') {
+            scene.remove(scene.title);
+            setGameState('on progress');
         }
         scene.update && scene.update(timeStamp); 
         document.getElementById('score').innerHTML =

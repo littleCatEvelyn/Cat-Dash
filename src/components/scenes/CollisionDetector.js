@@ -1,4 +1,4 @@
-import { addToNumOfFlower } from 'utils';
+import { addToNumOfFlower, getGameState, setGameState } from 'utils'
 
 function detectCollision(scene, obstacle) {
     if (scene.player.boundingBox.intersectsBox(obstacle.boundingBox)) {
@@ -10,12 +10,15 @@ function detectCollision(scene, obstacle) {
         		break;
         	case 'land':
         		scene.state.pause = true;
+                setGameState('over');
         		break;
         	case 'ufo':
         		scene.state.pause = true;
+                setGameState('over');
         		break;
         	case 'tree':
         		scene.state.pause = true;
+                setGameState('over');
         		break;
         }
     }

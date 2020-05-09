@@ -3,8 +3,7 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import MODEL from './cat.gltf';
 import { TWEEN } from 'three/examples/jsm/libs/tween.module.min.js';
 
-
-const UP_LIMIT = 0.5;
+const UP_LIMIT = 0.7;
 const DOWN_LIMIT = -0.2;
 
 class Cat extends Group {
@@ -40,12 +39,12 @@ class Cat extends Group {
     update(timeStamp) {
         switch(this.move) {
             case 'up':
-                this.position.y += 0.006;
+                this.position.y += 0.01;
                 if (this.position.y >= UP_LIMIT)
                     this.move = 'down';
                 break;
             case 'down':
-                this.position.y -= 0.005;
+                this.position.y -= 0.007;
                 if (this.position.y <= DOWN_LIMIT)
                     this.move = 'up';
                 break;
