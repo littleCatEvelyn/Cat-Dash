@@ -27,6 +27,18 @@ class Cat extends Group {
         this.boundingBox = new Box3;
         parent.addToUpdateList(this);
         parent.addToPlayerList(this);
+
+        const floatingUp = new TWEEN.Tween(this.position)
+            .to({ y: UP_LIMIT }, 500)
+            .easing(TWEEN.Easing.Quadratic.Out);
+        const floatingDown = new TWEEN.Tween(this.position)
+            .to({ y: DOWN_LIMIT }, 500)
+            .easing(TWEEN.Easing.Quadratic.Out);
+
+        floatingUp.onComplete(() => floatingDown.start());
+        floatingDown.onComplete(() => floatingUp.start());
+
+        floatingUp.start();
     }
 
     movePlayer(distance) {
@@ -37,19 +49,6 @@ class Cat extends Group {
     }
 
     update(timeStamp) {
-        switch(this.move) {
-            case 'up':
-                this.position.y += 0.01;
-                if (this.position.y >= UP_LIMIT)
-                    this.move = 'down';
-                break;
-            case 'down':
-                this.position.y -= 0.007;
-                if (this.position.y <= DOWN_LIMIT)
-                    this.move = 'up';
-                break;
-        }
-
         this.boundingBox.setFromObject(this);
         TWEEN.update();
     }
