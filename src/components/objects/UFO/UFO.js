@@ -3,6 +3,8 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import MODEL from './ufo.gltf';
 
 const LIMIT = 2.5e-3 * window.innerWidth;
+const originalWidth = 1919;
+const originalHeight = 946;
 
 class UFO extends Group {
     constructor(parent) {
@@ -15,7 +17,9 @@ class UFO extends Group {
         // the model is fetched from https://poly.google.com/view/fojR5i3h_nh
         const loader = new GLTFLoader();
         loader.load(MODEL, (gltf) => {       
-            gltf.scene.scale.set(1.5, 1.5, 1.5);
+            gltf.scene.scale.set(
+                1.5, 1.5 * window.innerHeight / originalHeight, 1.5 * window.innerWidth / originalWidth
+            );
             gltf.scene.rotation.set(0, 0, 0.5);
             gltf.scene.position.set(0, 0.5, 0);
             this.add(gltf.scene);

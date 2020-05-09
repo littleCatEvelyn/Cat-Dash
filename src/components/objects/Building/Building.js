@@ -2,6 +2,9 @@ import { Group, Box3 } from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import MODEL from './building.gltf';
 
+const originalWidth = 1919;
+const originalHeight = 946;
+
 class Building extends Group {
     constructor(parent) {
         // Call parent Group() constructor
@@ -12,7 +15,9 @@ class Building extends Group {
         // the model is fetched from https://poly.google.com/view/dzt483I8sr-
         const loader = new GLTFLoader();
         loader.load(MODEL, (gltf) => {       
-            gltf.scene.scale.set(0.4, 0.4, 0.4);
+            gltf.scene.scale.set(
+                0.4, 0.4 * window.innerHeight / originalHeight, 0.4 * window.innerWidth / originalWidth
+            );
             gltf.scene.position.set(-300, -50, 520);
             this.add(gltf.scene);
         });

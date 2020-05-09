@@ -4,6 +4,8 @@ import MODEL from './land.gltf';
 
 const UP_LIMIT = 8;
 const DOWN_LIMIT = -1;
+const originalWidth = 1919;
+const originalHeight = 946;
 
 class Land extends Group {
     constructor(parent) {
@@ -15,6 +17,9 @@ class Land extends Group {
 
         const loader = new GLTFLoader();
         loader.load(MODEL, (gltf) => {
+            gltf.scene.sacle.set(
+                1, window.innerHeight / originalHeight, window.innerWidth / originalWidth
+            );
         	gltf.scene.position.set(0, 1, 0.5);
             this.add(gltf.scene);
         });
