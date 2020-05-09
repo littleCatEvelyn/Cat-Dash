@@ -1,0 +1,17 @@
+@font-face{
+	font-family:'digital-clock-font';
+	src: url('font.ttf');
+}
+
+p {
+	position: absolute;
+	left: 20px;
+	top: 20px;
+	text-align: center;
+	margin: 0;
+	z-index: 1;
+	color: #ffffff;
+	font-size: 50px;
+	font-family: digital-clock-font;
+}
+
