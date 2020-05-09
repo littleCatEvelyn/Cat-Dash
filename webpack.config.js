@@ -66,6 +66,10 @@ module.exports = {
                 from: './src/style/font.ttf',
                 to: 'font.ttf',
             },
+            {
+                from: './src/music/backgroundMusic.mp3',
+                to: 'backgroundMusic.mp3',
+            }
         ]),
     ],
 };

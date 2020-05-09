@@ -1,1 +1,2 @@
-export { getNumOfFlower, setNumOfFlower, addToNumOfFlower } from './global.js';
+export { getNumOfFlower, setNumOfFlower, addToNumOfFlower, 
+		 getGameState, setGameState } from './global.js';

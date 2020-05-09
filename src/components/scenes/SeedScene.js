@@ -4,6 +4,7 @@ import { BasicLights } from 'lights';
 import { BackgroundTexture } from 'textures';
 import { generateObstacle, generateScene, initializeScene,
          updateScene } from 'scenes';
+import { getGameState, setGameState } from 'utils';
 
 const step = 2.5e-3 * window.innerWidth;
 

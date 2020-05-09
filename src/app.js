@@ -28,7 +28,6 @@ canvas.style.display = 'block'; // Removes padding below canvas
 document.body.style.margin = 0; // Removes margin around page
 document.body.style.overflow = 'hidden'; // Fix scrolling
 document.body.appendChild(canvas);
-console.log(scene);
 
 // Set up controls
 const controls = new OrbitControls(camera, canvas);
