@@ -12,8 +12,8 @@ class Tree extends Group {
         // the model is fetched from https://poly.google.com/view/boa81hhHF25
         const loader = new GLTFLoader();
         loader.load(MODEL, (gltf) => {       
-            gltf.scene.scale.set(3.2, 3.2, 3.2);
-            gltf.scene.position.set(0, -1.3, 2.5);
+            gltf.scene.scale.set(4, 4, 4);
+            gltf.scene.position.set(0, -3.3, 2.8);
             this.add(gltf.scene);
         });
 
