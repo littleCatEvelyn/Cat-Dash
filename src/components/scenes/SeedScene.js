@@ -1,5 +1,5 @@
 import { Scene, Color, Camera, Vector3, Fog} from 'three';
-import { Cat, Mop, Road, Building, Board } from 'objects';
+import { Cat, Mop, Road, Building } from 'objects';
 import { BasicLights } from 'lights';
 import { BackgroundTexture } from 'textures';
 import { obstacleGenerator, sceneGenerator, initializeScene, 
@@ -31,11 +31,9 @@ class SeedScene extends Scene {
         const cat = new Cat(this);
         const mop = new Mop(this);
         const road = new Road(this, step).mesh;
-        const board = new Board(this)
 
         this.player = cat;
-        this.add(lights, cat, mop, road, board);
-
+        this.add(lights, cat, mop, road);
         initializeScene(this);
     }
 

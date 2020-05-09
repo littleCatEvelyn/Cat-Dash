@@ -48,6 +48,7 @@ module.exports = {
             objects$: path.resolve(__dirname, 'src/components/objects'),
             scenes$: path.resolve(__dirname, 'src/components/scenes'),
             textures$: path.resolve(__dirname, 'src/components/textures'),
+            utils$: path.resolve(__dirname, 'src/utils'),
         },
     },
     plugins: [
@@ -57,7 +58,14 @@ module.exports = {
                 from: './src/style/main.css',
                 to: 'main.css',
             },
+            {
+                from: './src/style/font.json',
+                to: 'font.json',
+            },
+            {
+                from: './src/style/font.ttf',
+                to: 'font.ttf',
+            },
         ]),
     ],
-
 };

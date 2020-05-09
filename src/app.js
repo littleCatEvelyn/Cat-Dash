@@ -16,6 +16,7 @@ const camera = new PerspectiveCamera(45, window.innerWidth / window.innerHeight,
 const renderer = new WebGLRenderer({ antialias: true });
 const clock = new Clock(false);
 let timeAccumulator = 0;
+let numOfFlowerCollected = 0;
 
 // Set up camera
 camera.position.set(-10, 4, 0);
@@ -46,13 +47,14 @@ const onAnimationFrameHandler = (timeStamp) => {
             clock.stop();
             console.log(timeAccumulator);
             console.log(scene);
-            // TODO handle time overflow
         }
     } else {
         if (!clock.running){
             clock.start();
         }
         scene.update && scene.update(timeStamp); 
+        console.log(NUM_OF_FLOWER_COLLECTED);
+        document.getElementById('score').innerHTML = Math.round(timeAccumulator + clock.getElapsedTime());
     }
     window.requestAnimationFrame(onAnimationFrameHandler);
 };

@@ -1,13 +1,17 @@
-div {
-	transform: skew(90deg);
+@font-face{
+	font-family:'digital-clock-font';
+	src: url('font.ttf');
 }
 
-h1 {
+p {
 	position: absolute;
+	left: 20px;
+	top: 20px;
 	text-align: center;
 	margin: 0;
 	z-index: 1;
 	color: #ffffff;
-	width: 100%;
-	-ms-transform: rotate(-90deg);
+	font-size: 50px;
+	font-family: digital-clock-font;
 }
+
