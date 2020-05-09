@@ -32,7 +32,7 @@ class SeedScene extends Scene {
         audioLoader.load( 'meow.mp3', function( buffer ) {
             sound.setBuffer( buffer );
             sound.setLoop( false );
-            sound.setVolume( 0.8 );
+            sound.setVolume( 1.0 );
             sound.pause();
         });
 
