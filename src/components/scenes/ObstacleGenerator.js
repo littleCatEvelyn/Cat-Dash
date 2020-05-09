@@ -9,7 +9,7 @@ const trackPositionList = [
 	new Vector3(250, 0, step)
 ]
 
-function obstacleGenerator(scene) {
+function generateObstacle(scene) {
     const doCreatNewObstacle = Math.random() > scene.state.probability;
     if (doCreatNewObstacle) {
         const numOfObstacles = obstacleList.length;
@@ -41,4 +41,4 @@ function obstacleGenerator(scene) {
     }
 }
 
-export default obstacleGenerator;
+export default generateObstacle;

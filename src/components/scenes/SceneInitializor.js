@@ -16,7 +16,7 @@ const trackPositionList = [
     new Vector3(400, 0, 15*step),
 ]
 
-function sceneGenerator(scene) {
+function initializeScene(scene) {
     for (let i = 0; i < trackPositionList.length; i++) {
         const numOfObjects = objectList.length;
         const objectTypeId = Math.floor(Math.random() * numOfObjects);
@@ -40,4 +40,4 @@ function sceneGenerator(scene) {
     }
 }
 
-export default sceneGenerator;
+export default initializeScene;

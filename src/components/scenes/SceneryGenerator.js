@@ -8,7 +8,7 @@ const trackPositionList = [
 	new Vector3(500, 0, 15*step),
 ]
 
-function sceneGenerator(scene) {
+function generateScene(scene) {
     const doCreatNewObject = Math.random() > scene.state.probability;
     if (doCreatNewObject) {
         const numOfObjects = objectList.length;
@@ -33,4 +33,4 @@ function sceneGenerator(scene) {
     }
 }
 
-export default sceneGenerator;
+export default generateScene;

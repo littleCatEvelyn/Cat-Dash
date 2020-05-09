@@ -9,6 +9,7 @@
 import { WebGLRenderer, PerspectiveCamera, Vector3, Clock } from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import { SeedScene } from 'scenes';
+import { getNumOfFlower } from 'utils'
 
 // Initialize core ThreeJS components
 const scene = new SeedScene();
@@ -16,7 +17,6 @@ const camera = new PerspectiveCamera(45, window.innerWidth / window.innerHeight,
 const renderer = new WebGLRenderer({ antialias: true });
 const clock = new Clock(false);
 let timeAccumulator = 0;
-let numOfFlowerCollected = 0;
 
 // Set up camera
 camera.position.set(-10, 4, 0);
@@ -53,8 +53,8 @@ const onAnimationFrameHandler = (timeStamp) => {
             clock.start();
         }
         scene.update && scene.update(timeStamp); 
-        console.log(NUM_OF_FLOWER_COLLECTED);
-        document.getElementById('score').innerHTML = Math.round(timeAccumulator + clock.getElapsedTime());
+        document.getElementById('score').innerHTML =
+            Math.round(timeAccumulator + clock.getElapsedTime()) + getNumOfFlower();
     }
     window.requestAnimationFrame(onAnimationFrameHandler);
 };

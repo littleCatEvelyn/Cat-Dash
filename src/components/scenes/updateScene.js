@@ -1,4 +1,4 @@
-import { collisionDetection } from 'scenes';
+import { detectCollision } from 'scenes';
 
 const LIMIT = -250;
 
@@ -15,7 +15,7 @@ function updateUpdateList(timeStamp, scene) {
             switch(obj.label) {
                 case 'obstacle': 
                     // detect collision
-                    collisionDetection(scene, obj);
+                    detectCollision(scene, obj);
             }
         }
     }

@@ -1,8 +1,11 @@
-function collisionDetection(scene, obstacle) {
+import { addToNumOfFlower } from 'utils';
+
+function detectCollision(scene, obstacle) {
     if (scene.player.boundingBox.intersectsBox(obstacle.boundingBox)) {
         switch(obstacle.name) {
         	case 'flower': 
         		scene.remove(obstacle);
+                addToNumOfFlower(1);
         		break;
         	case 'land':
         		scene.state.pause = true;
@@ -17,4 +20,4 @@ function collisionDetection(scene, obstacle) {
     }
 }
 
-export default collisionDetection;
+export default detectCollision;

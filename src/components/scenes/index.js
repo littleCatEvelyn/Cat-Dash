@@ -1,6 +1,6 @@
 export { default as SeedScene } from './SeedScene.js';
-export { default as obstacleGenerator } from './ObstacleGenerator.js';
-export { default as sceneGenerator } from './SceneryGenerator.js';
-export { default as collisionDetection } from './collisionDetection.js';
-export { default as initializeScene } from './initializeScene.js';
-export { default as updateScene } from './updateScene.js';
+export { default as generateObstacle } from './ObstacleGenerator.js';
+export { default as generateScene } from './SceneryGenerator.js';
+export { default as detectCollision } from './CollisionDetector.js';
+export { default as initializeScene } from './SceneInitializor.js';
+export { default as updateScene } from './UpdateScene.js';

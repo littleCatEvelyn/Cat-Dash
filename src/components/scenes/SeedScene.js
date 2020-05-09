@@ -2,7 +2,7 @@ import { Scene, Color, Camera, Vector3, Fog} from 'three';
 import { Cat, Mop, Road, Building } from 'objects';
 import { BasicLights } from 'lights';
 import { BackgroundTexture } from 'textures';
-import { obstacleGenerator, sceneGenerator, initializeScene, 
+import { generateObstacle, generateScene, initializeScene,
          updateScene } from 'scenes';
 
 const step = 2.5e-3 * window.innerWidth;
@@ -39,8 +39,8 @@ class SeedScene extends Scene {
 
     update(timeStamp) {
         updateScene(timeStamp, this);        
-        obstacleGenerator(this);
-        sceneGenerator(this);
+        generateObstacle(this);
+        generateScene(this);
     }
 
     switchTrack(direction) {

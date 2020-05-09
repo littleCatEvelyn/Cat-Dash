@@ -1,0 +1,1 @@
+export { getNumOfFlower, setNumOfFlower, addToNumOfFlower } from './global.js';
