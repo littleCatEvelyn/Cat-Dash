@@ -13,5 +13,6 @@ p {
 	color: #ffffff;
 	font-size: 50px;
 	font-family: digital-clock-font;
+	-webkit-text-stroke: 0.8px #9e64e3; 
 }
 
