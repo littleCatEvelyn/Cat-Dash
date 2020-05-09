@@ -4,7 +4,7 @@ import { Cat, Mop, Road, Building, GenerateTitle } from 'objects';
 import { BasicLights } from 'lights';
 import { BackgroundTexture } from 'textures';
 import { generateObstacle, generateScene, initializeScene,
-         updateScene } from 'scenes';
+         updateScene } from 'functions';
 
 const step = 2.5e-3 * window.innerWidth;
 

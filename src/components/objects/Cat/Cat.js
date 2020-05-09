@@ -29,10 +29,10 @@ class Cat extends Group {
         parent.addToPlayerList(this);
 
         const floatingUp = new TWEEN.Tween(this.position)
-            .to({ y: UP_LIMIT }, 500)
+            .to({ y: UP_LIMIT }, 800)
             .easing(TWEEN.Easing.Quadratic.Out);
         const floatingDown = new TWEEN.Tween(this.position)
-            .to({ y: DOWN_LIMIT }, 500)
+            .to({ y: DOWN_LIMIT }, 1000)
             .easing(TWEEN.Easing.Quadratic.Out);
 
         floatingUp.onComplete(() => floatingDown.start());

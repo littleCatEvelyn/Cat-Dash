@@ -1,4 +1,4 @@
-import { detectCollision } from 'scenes';
+import { detectCollision } from 'functions';
 
 const LIMIT = -250;
 
