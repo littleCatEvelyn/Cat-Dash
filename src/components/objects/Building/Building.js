@@ -18,7 +18,7 @@ class Building extends Group {
             gltf.scene.scale.set(
                 0.4, 0.4 * window.innerHeight / originalHeight, 0.4 * window.innerWidth / originalWidth
             );
-            gltf.scene.position.set(-300, -50, 520);
+            gltf.scene.position.set(-300, -50, 520 * window.innerWidth / originalWidth);
             this.add(gltf.scene);
         });
         // this.boundingBox = new Box3;

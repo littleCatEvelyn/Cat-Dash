@@ -18,7 +18,7 @@ class City extends Group {
             gltf.scene.scale.set(
                 12, 12 * window.innerHeight / originalHeight, 12 * window.innerWidth / originalWidth
             );
-            gltf.scene.position.set(0, 50, -0.5);
+            gltf.scene.position.set(0, 50 * window.innerHeight / originalHeight, -0.5);
             this.add(gltf.scene);
         });
         // this.boundingBox = new Box3;
