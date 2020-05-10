@@ -10,3 +10,4 @@ export * from './Building';
 export * from './City';
 export * from './Ship';
 export * from './Title';
+export * from './Rainbow';

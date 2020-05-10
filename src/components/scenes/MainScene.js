@@ -1,6 +1,6 @@
 import { Scene, Color, Camera, Vector3, Fog, AudioListener, 
          Audio, AudioLoader } from 'three';
-import { Cat, Mop, Road } from 'objects';
+import { Cat, Mop, Road, Rainbow } from 'objects';
 import { BasicLights } from 'lights';
 import { BackgroundTexture } from 'textures';
 import { generateObstacle, generateScene, initializeScene,
@@ -58,8 +58,10 @@ class MainScene extends Scene {
         const mop = new Mop(this);
         const road = new Road(this, step).mesh;
 
+        const rainbow = new Rainbow(this);
+
         this.player = cat;
-        this.add(lights, cat, mop, road);
+        this.add(lights, cat, mop, road, rainbow);
         initializeScene(this);
     }
 
@@ -68,7 +70,7 @@ class MainScene extends Scene {
             if (this.state.speedFlag) {
                 this.state.speed = Math.min(this.state.speed + 0.1, 2.3);
                 this.state.speedFlag = false;
-                this.state.probability = Math.max(this.state.probability - 2e-3, 0.94);
+                this.state.probability = Math.max(this.state.probability - 2e-3, 0.85);
                 console.log(this.state.probability);
             }
         } else {
