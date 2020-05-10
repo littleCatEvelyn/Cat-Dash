@@ -14,7 +14,7 @@ import { getNumOfFlower, setNumOfFlower, getGameState, setGameState } from 'util
 
 // Initialize core ThreeJS components
 let scene = new MainScene();
-const camera = new PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 10000);
+const camera = new PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 1000);
 const renderer = new WebGLRenderer({ antialias: true });
 const clock = new Clock(false);
 let timeAccumulator = 0;

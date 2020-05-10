@@ -1,6 +1,6 @@
 import { detectCollision } from 'functions';
 
-const LIMIT = -250;
+const LIMIT = -80;
 
 function updateUpdateList(timeStamp, scene) {
     const newUpdateLst = [];

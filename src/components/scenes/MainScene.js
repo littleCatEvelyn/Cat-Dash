@@ -26,6 +26,7 @@ class MainScene extends Scene {
             pause: true,
             track: 0,
             probability: 0.98,
+            sceneProba: 0.99,
             speed: 0.5,
             speedFlag: false
         };
@@ -71,7 +72,8 @@ class MainScene extends Scene {
                 this.state.speed = Math.min(this.state.speed + 0.1, 2.3);
                 this.state.speedFlag = false;
                 this.state.probability = Math.max(this.state.probability - 2e-3, 0.85);
-                console.log(this.state.probability);
+                this.state.sceneProba = Math.max(this.state.probability - 2e-3, 0.98);
+                // console.log(this.state.probability);
             }
         } else {
             this.state.speedFlag = true;

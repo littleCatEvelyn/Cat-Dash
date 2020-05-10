@@ -1,15 +1,15 @@
 import { Building, City, Ship, Rainbow } from 'objects';
 import { Vector3 } from 'three';
 
-const objectList = ["rainbow", "city", "ship", "building"];
+const objectList = ["rainbow", "city", "ship", "building", "ship"];
 const step = 2.5e-3 * window.innerWidth;
 const trackPositionList = [
-	new Vector3(500, 0, -15*step),
-	new Vector3(500, 0, 15*step),
+	new Vector3(250, 0, -15*step),
+	new Vector3(250, 0, 15*step),
 ]
 
 function generateScene(scene) {
-    const doCreatNewObject = Math.random() > 0.985;
+    const doCreatNewObject = Math.random() > scene.state.sceneProba;
     if (doCreatNewObject) {
         const numOfObjects = objectList.length;
         const objectTypeId = Math.floor(Math.random() * numOfObjects);
@@ -33,7 +33,7 @@ function generateScene(scene) {
             const trackPosition = trackPositionList[Math.floor(Math.random() * trackPositionList.length)];
             object.position.set(trackPosition.x, trackPosition.y, trackPosition.z);
         } else {
-            object.position.set(500, 0, 0);
+            object.position.set(250, 0, 0);
         }
         
         scene.add(object);
