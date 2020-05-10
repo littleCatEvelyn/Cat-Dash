@@ -63,8 +63,6 @@ class MainScene extends Scene {
         const star = new Star(this);
         const sun = new Sun(this);
 
-        // star.position.set(350, -250, 0);
-
         this.player = cat;
         this.add(lights, cat, mop, road, rainbow, star, sun);
         initializeScene(this);
