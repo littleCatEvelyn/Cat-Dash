@@ -1,6 +1,7 @@
 import { Group, Box3 } from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import MODEL from './ufo.gltf';
+import { TWEEN } from 'three/examples/jsm/libs/tween.module.min.js';
 
 const LIMIT = 2.5e-3 * window.innerWidth;
 const originalWidth = 1919;
@@ -27,26 +28,22 @@ class UFO extends Group {
 
         this.boundingBox = new Box3;
         parent.addToUpdateList(this);
+
+        const floatingLeft = new TWEEN.Tween(this.position)
+            .to({ z: -1.5 * LIMIT }, 2000);
+        const floatingRight = new TWEEN.Tween(this.position)
+            .to({ z: 1.5 * LIMIT }, 2000);
+
+        floatingLeft.onComplete(() => floatingRight.start());
+        floatingRight.onComplete(() => floatingLeft.start());
+
+        floatingLeft.start();
     }
 
     update(timeStamp, speed) {
         this.position.x -= speed;
-
-        // move left and right
-        switch(this.move) {
-            case 'left':
-                this.position.z -= 0.1;
-                if (this.position.z <= -1.5 * LIMIT)
-                    this.move = 'right';
-                break;
-            case 'right':
-                this.position.z += 0.1;
-                if (this.position.z >= 1.5 * LIMIT)
-                    this.move = 'left';
-                break;
-        }
-
         this.boundingBox.setFromObject(this);
+        TWEEN.update();
     }
 }
 

@@ -64,11 +64,11 @@ class MainScene extends Scene {
     }
 
     update(timeStamp, elapsedTime) {
-        if (elapsedTime % 30 == 0) {
+        if (elapsedTime % 10 == 0) {
             if (this.state.speedFlag) {
-                this.state.speed = Math.min(this.state.speed + 0.3, 2.3);
+                this.state.speed = Math.min(this.state.speed + 0.1, 2.3);
                 this.state.speedFlag = false;
-                this.state.probability = Math.max(this.state.probability - 0.03, 0.97);
+                this.state.probability = Math.max(this.state.probability - 0.01, 0.97);
             }
         } else {
             this.state.speedFlag = true;
