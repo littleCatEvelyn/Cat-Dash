@@ -1,14 +1,16 @@
 import { Building, City, Ship } from 'objects';
 import { Vector3 } from 'three';
 
-const objectList = ["city", "ship", "building"];
+const objectList = ["city", "ship"];
 const step = 2.5e-3 * window.innerWidth;
 const trackPositionList = [
+    new Vector3(-100, 0, -15*step),
     new Vector3(0, 0, -15*step),
     new Vector3(100, 0, -15*step),
     new Vector3(200, 0, -15*step),
     new Vector3(300, 0, -15*step),
     new Vector3(400, 0, -15*step),
+    new Vector3(-100, 0, 15*step),
     new Vector3(0, 0, 15*step),
     new Vector3(100, 0, 15*step),
     new Vector3(200, 0, 15*step),

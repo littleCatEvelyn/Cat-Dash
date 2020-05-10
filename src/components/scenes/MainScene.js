@@ -61,7 +61,7 @@ class MainScene extends Scene {
         initializeScene(this);
     }
 
-    update(timeStamp) {
+    update(timeStamp, elapsedTime) {
         updateScene(timeStamp, this);        
         generateObstacle(this);
         generateScene(this);

@@ -74,9 +74,9 @@ const onAnimationFrameHandler = (timeStamp) => {
             scene.remove(scene.startScene);
             setGameState('on progress');
         }
-        scene.update && scene.update(timeStamp); 
-        document.getElementById('score').innerHTML =
-            Math.round(timeAccumulator + clock.getElapsedTime()) + getNumOfFlower();
+        let totalElapsedTime = Math.round(timeAccumulator + clock.getElapsedTime());
+        scene.update && scene.update(timeStamp, totalElapsedTime); 
+        document.getElementById('score').innerHTML = totalElapsedTime + getNumOfFlower();
     }
     window.requestAnimationFrame(onAnimationFrameHandler);
 };
@@ -113,6 +113,8 @@ window.addEventListener('click', event => {
     var game = document.getElementById("game");
     game.style.display = 'none';
 
+    sound.stop();
+    sound.hasPlaybackControl = true;
     scene = new MainScene();
     timeAccumulator = 0;
     setNumOfFlower(0);
