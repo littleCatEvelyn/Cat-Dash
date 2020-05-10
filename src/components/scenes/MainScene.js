@@ -1,6 +1,6 @@
 import { Scene, Color, Camera, Vector3, Fog, AudioListener, 
          Audio, AudioLoader } from 'three';
-import { Cat, Mop, Road, Rainbow } from 'objects';
+import { Cat, Mop, Road, Rainbow, Star, Sun } from 'objects';
 import { BasicLights } from 'lights';
 import { BackgroundTexture } from 'textures';
 import { generateObstacle, generateScene, initializeScene,
@@ -58,11 +58,15 @@ class MainScene extends Scene {
         const cat = new Cat(this);
         const mop = new Mop(this);
         const road = new Road(this, step).mesh;
-
         const rainbow = new Rainbow(this);
 
+        const star = new Star(this);
+        const sun = new Sun(this);
+
+        // star.position.set(350, -250, 0);
+
         this.player = cat;
-        this.add(lights, cat, mop, road, rainbow);
+        this.add(lights, cat, mop, road, rainbow, star, sun);
         initializeScene(this);
     }
 

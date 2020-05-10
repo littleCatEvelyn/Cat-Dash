@@ -12,7 +12,7 @@ class Rainbow extends Group {
         this.name = 'rainbow';
         this.label = 'scene';
         console.log(window.innerWidth, window.innerHeight);
-        // the model is fetched from https://poly.google.com/view/bzRjbJ74JCr
+        // the model is fetched from https://poly.google.com/view/cdaoZ3DWU9F
         const loader = new GLTFLoader();
         loader.load(MODEL, (gltf) => {   
             gltf.scene.scale.set(

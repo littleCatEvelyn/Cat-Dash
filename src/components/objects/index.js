@@ -11,3 +11,5 @@ export * from './City';
 export * from './Ship';
 export * from './Title';
 export * from './Rainbow';
+export * from './Star';
+export * from './Sun';
