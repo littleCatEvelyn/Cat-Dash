@@ -1,4 +1,4 @@
-import { addToNumOfFlower, getGameState, setGameState } from 'utils'
+import { addToNumOfFlower, setGameState } from 'utils'
 
 function detectCollision(scene, obstacle) {
     if (scene.player.boundingBox.intersectsBox(obstacle.boundingBox)) {

@@ -14,6 +14,7 @@ class Flower extends Group {
         loader.load(MODEL, (gltf) => {
             gltf.scene.scale.set(1.5, 1.5, 1.5);
             gltf.scene.rotation.set(0, Math.PI / 2, 0);
+            gltf.scene.position.set(0, -1.5, 0);
             this.add(gltf.scene);
         });
 
