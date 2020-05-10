@@ -6,12 +6,19 @@
         <link rel="stylesheet" type="text/css" href="main.css" />
     </head>
     <body>
-    	<div id='start'><img id="gif" src='loading.gif'></div>
+    	<div id='start'>
+            <img id="gif" src='loading.gif'>
+            <span>
+                <p><span class='emphasize'>Left</span> and <span class='emphasize'>Right</span>  keys to control the cat... <br>
+                <p><span class='emphasize'>Space</span> to pause...</p>
+                <p>Have fun :P</p>
+            </span>
+        </div>
     	<p id = 'game'><span id='text'>Score</span> <span id='score'>0</span></p>
     </body>
 
     <script type="text/javascript">
-    	setTimeout(loading, 1800);
+    	setTimeout(loading, 3500);
     	function loading() {
             var game = document.getElementById("game");
             var start = document.getElementById("start");
