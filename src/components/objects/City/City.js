@@ -1,4 +1,4 @@
-import { Group, Box3 } from 'three';
+import { Group } from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import MODEL from './city.gltf';
 
@@ -21,14 +21,13 @@ class City extends Group {
             gltf.scene.position.set(0, 50, -0.5);
             this.add(gltf.scene);
         });
-        this.boundingBox = new Box3;
+        // this.boundingBox = new Box3;
         parent.addToUpdateList(this);
     }
 
-    update(timeStamp) {
-        this.position.x -= 0.5;
-        this.boundingBox.setFromObject(this);
-        // console.log(this.boundingBox);
+    update(timeStamp, speed) {
+        this.position.x -= speed;
+        // this.boundingBox.setFromObject(this);
     }
 }
 

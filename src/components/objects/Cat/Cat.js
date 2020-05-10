@@ -48,7 +48,7 @@ class Cat extends Group {
         moveDis.start();
     }
 
-    update(timeStamp) {
+    update(timeStamp, speed) {
         this.boundingBox.setFromObject(this);
         TWEEN.update();
     }

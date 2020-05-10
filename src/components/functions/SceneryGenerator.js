@@ -1,7 +1,7 @@
 import { Building, City, Ship } from 'objects';
 import { Vector3 } from 'three';
 
-const objectList = ["building", "city", "ship"];
+const objectList = ["building", "city", "ship", "city", "ship"];
 const step = 2.5e-3 * window.innerWidth;
 const trackPositionList = [
 	new Vector3(500, 0, -15*step),
@@ -9,7 +9,7 @@ const trackPositionList = [
 ]
 
 function generateScene(scene) {
-    const doCreatNewObject = Math.random() > scene.state.probability;
+    const doCreatNewObject = Math.random() > 0.985;
     if (doCreatNewObject) {
         const numOfObjects = objectList.length;
         const objectTypeId = Math.floor(Math.random() * numOfObjects);

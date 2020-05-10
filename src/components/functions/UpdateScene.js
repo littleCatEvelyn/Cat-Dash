@@ -6,7 +6,7 @@ function updateUpdateList(timeStamp, scene) {
     const newUpdateLst = [];
 
     for (const obj of scene.state.updateList) {
-        obj.update(timeStamp);
+        obj.update(timeStamp, scene.state.speed);
         if (obj.position.x < LIMIT) 
             scene.remove(obj);
         else {

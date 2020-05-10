@@ -115,6 +115,7 @@ window.addEventListener('click', event => {
 
     sound.stop();
     sound.hasPlaybackControl = true;
+    
     scene = new MainScene();
     timeAccumulator = 0;
     setNumOfFlower(0);

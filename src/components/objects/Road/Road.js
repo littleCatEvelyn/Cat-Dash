@@ -85,9 +85,9 @@ class Road extends Group {
         parent.addToUpdateList(this);
     }
 
-    update(timeStamp) {
+    update(timeStamp, speed) {
         timeStamp *= 0.001;
-        this.mesh.position.x -= 0.5;
+        this.mesh.position.x -= speed;
         this.uniforms.iTime.value = timeStamp;
 
         // renew road

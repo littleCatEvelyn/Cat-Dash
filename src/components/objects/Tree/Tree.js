@@ -26,8 +26,8 @@ class Tree extends Group {
         parent.addToUpdateList(this);
     }
 
-    update(timeStamp) {
-        this.position.x -= 0.5;
+    update(timeStamp, speed) {
+        this.position.x -= speed;
 
         this.boundingBox.setFromObject(this);
     }

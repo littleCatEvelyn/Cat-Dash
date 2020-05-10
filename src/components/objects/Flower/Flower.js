@@ -12,6 +12,7 @@ class Flower extends Group {
 
         const loader = new GLTFLoader();
         loader.load(MODEL, (gltf) => {
+            gltf.scene.scale.set(1.5, 1.5, 1.5);
             gltf.scene.rotation.set(0, Math.PI / 2, 0);
             this.add(gltf.scene);
         });
@@ -20,9 +21,9 @@ class Flower extends Group {
         parent.addToUpdateList(this);
     }
 
-    update(timeStamp) {
+    update(timeStamp, speed) {
         this.rotation.y += Math.PI / 20;
-        this.position.x -= 0.5;
+        this.position.x -= speed;
 
         this.boundingBox.setFromObject(this);
     }

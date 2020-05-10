@@ -25,7 +25,9 @@ class MainScene extends Scene {
             playerList: [], // subset of updateList, including obj labeled player
             pause: true,
             track: 0,
-            probability: 0.99
+            probability: 0.99,
+            speed: 0.5,
+            speedFlag: false
         };
 
         this.startScene = new StartScene();
@@ -62,6 +64,15 @@ class MainScene extends Scene {
     }
 
     update(timeStamp, elapsedTime) {
+        if (elapsedTime % 30 == 0) {
+            if (this.state.speedFlag) {
+                this.state.speed = Math.min(this.state.speed + 0.3, 2.3);
+                this.state.speedFlag = false;
+                this.state.probability = Math.max(this.state.probability - 0.03, 0.97);
+            }
+        } else {
+            this.state.speedFlag = true;
+        }
         updateScene(timeStamp, this);        
         generateObstacle(this);
         generateScene(this);
