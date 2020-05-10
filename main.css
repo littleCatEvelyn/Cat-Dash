@@ -4,15 +4,6 @@
 }
 
 p {
-	position: absolute;
-	left: 20px;
-	top: 20px;
-	text-align: center;
-	margin: 0;
-	z-index: 1;
-	color: #ffffff;
-	font-size: 50px;
-	font-family: digital-clock-font;
 	-webkit-text-stroke: 0.8px #9e64e3; 
 }
 
@@ -37,11 +28,28 @@ img {
 	top: 350px;
 	width: 100%;
 	text-align: center;
-	color: #ffff00;
-	font-size: 50px;;
+	color: #ffffff;
+	font-size: 22px;
+	font-family: digital-clock-font;
+	-webkit-text-stroke: 0.8px #9e64e3; 
 }
 
 #game {
 	display: none;
+	position: absolute;
+	left: 20px;
+	top: 20px;
+	text-align: center;
+	margin: 0;
+	z-index: 1;
+	color: #ffffff;
+	font-size: 50px;
+	font-family: digital-clock-font;
+	-webkit-text-stroke: 0.8px #9e64e3; 
+}
+
+.emphasize {
+	font-size: 28px;
+	color: #9e64e3;
 }
 
