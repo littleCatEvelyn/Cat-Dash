@@ -11,7 +11,6 @@ class Mop extends Group {
         // Call parent Group() constructor
         super();
         this.name = 'mop';
-        this.move = 'up';
         this.label = 'player';
 
         // the model is fetched from https://poly.google.com/view/bzCi_ZLQPN4

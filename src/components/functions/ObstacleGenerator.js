@@ -1,9 +1,9 @@
 import { Flower, Land, Cloud, UFO, Tree} from 'objects';
 import { Vector3 } from 'three';
-import { getObstacleTimeList } from "utils";
+import { getObstacleTimeList, getAvailableObstacles } from "utils";
 
-const obstacleList = ["flower", "UFO", "land", "tree", "cloud"];
-const step = 2.5e-3 * window.innerWidth;
+const obstacleList = ["flower", "ufo", "land", "tree", "cloud"];
+const step = 3e-3 * window.innerWidth;
 const PUT_DISTANCE = 250;
 const trackPositionList = [
 	new Vector3(PUT_DISTANCE, 0, -step),
@@ -37,34 +37,45 @@ function canPut(trackId, obstacle) {
 function generateObstacle(scene, elapsedTime) {
     const doCreatNewObstacle = Math.random() > scene.state.probability;
     if (doCreatNewObstacle) {
+        // choose trancl
         const trackId = Math.floor(Math.random() * trackPositionList.length);
         const trackPosition = trackPositionList[trackId];
+
+        // choose obstacle
         const numOfObstacles = obstacleList.length;
         const obstacleTypeId = Math.floor(Math.random() * numOfObstacles);
         const obstacleName = obstacleList[obstacleTypeId];
         let obstacle = undefined;
-        switch(obstacleName) {
-            case "flower":
-                obstacle = new Flower(scene);
-                break;
-            case "UFO":
-                obstacle = new UFO(scene);
-                break;
-            case "land":
-                obstacle = new Land(scene);
-                break;
-            case "tree":
-                obstacle = new Tree(scene);
-                break;
-            case "cloud":
-                obstacle = new Cloud(scene);
-                break;
+
+        const availableObstacleItems = getAvailableObstacles();
+        if (availableObstacleItems[obstacleName].length != 0) {
+            obstacle = availableObstacleItems[obstacleName].pop();
+        } else {
+            switch(obstacleName) {
+                case "flower":
+                    obstacle = new Flower(scene);
+                    break;
+                case "ufo":
+                    obstacle = new UFO(scene);
+                    break;
+                case "land":
+                    obstacle = new Land(scene);
+                    break;
+                case "tree":
+                    obstacle = new Tree(scene);
+                    break;
+                case "cloud":
+                    obstacle = new Cloud(scene);
+                    break;
+            }
         }
         
         obstacle.position.set(trackPosition.x, trackPosition.y, trackPosition.z);
 
-        if (canPut(trackId, obstacle)) 
+        if (canPut(trackId, obstacle)) {
             scene.add(obstacle);
+            scene.addToUpdateList(obstacle);
+        } 
     }
 }
 

@@ -4,7 +4,7 @@ import { TWEEN } from 'three/examples/jsm/libs/tween.module.min.js';
 import MODEL from './flower.gltf';
 
 class Flower extends Group {
-    constructor(parent) {
+    constructor() {
         // Call parent Group() constructor
         super();
         this.name = 'flower';
@@ -19,7 +19,6 @@ class Flower extends Group {
         });
 
         this.boundingBox = new Box3;
-        parent.addToUpdateList(this);
     }
 
     update(timeStamp, speed) {

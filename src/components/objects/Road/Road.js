@@ -63,7 +63,7 @@ class Road extends Group {
         this.name = 'road';
         this.parent = parent;
         this.step = step;
-        this.label = 'scene';
+        this.label = 'road';
 
         const plane = new PlaneBufferGeometry(6 * step, LENGTH);
         this.uniforms = {

@@ -11,7 +11,6 @@ class Cat extends Group {
         // Call parent Group() constructor
         super();
         this.name = 'cat';
-        this.move = 'up';
         this.label = 'player';
 
         // Load GLTF model

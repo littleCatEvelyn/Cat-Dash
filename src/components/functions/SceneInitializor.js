@@ -1,7 +1,7 @@
-import { Building, City, Ship } from 'objects';
+import { Building, City, Ship, Rainbow } from 'objects';
 import { Vector3 } from 'three';
 
-const objectList = ["city", "ship"];
+const objectList = ["city", "ship", "rainbow", "building"];
 const step = 2.5e-3 * window.innerWidth;
 const trackPositionList = [
     new Vector3(-100, 0, -15*step),
@@ -34,11 +34,20 @@ function initializeScene(scene) {
             case "ship":
                 object = new Ship(scene);
                 break;
+            case "rainbow":
+                object = new Rainbow(scene);
+                break;
         }
 
-        const trackPosition = trackPositionList[i];
-        object.position.set(trackPosition.x, trackPosition.y, trackPosition.z);
+        if (objectName != "rainbow") {
+            const trackPosition = trackPositionList[Math.floor(Math.random() * trackPositionList.length)];
+            object.position.set(trackPosition.x, trackPosition.y, trackPosition.z);
+        } else {
+            object.position.set(250, 0, 0);
+        }
+
         scene.add(object);
+        scene.addToUpdateList(object);
     }
 }
 

@@ -6,12 +6,11 @@ const originalWidth = 1919;
 const originalHeight = 946;
 
 class Rainbow extends Group {
-    constructor(parent) {
+    constructor() {
         // Call parent Group() constructor
         super();
         this.name = 'rainbow';
         this.label = 'scene';
-        console.log(window.innerWidth, window.innerHeight);
         // the model is fetched from https://poly.google.com/view/cdaoZ3DWU9F
         const loader = new GLTFLoader();
         loader.load(MODEL, (gltf) => {   
@@ -21,7 +20,6 @@ class Rainbow extends Group {
             gltf.scene.position.set(22, -5, 0.5);
             this.add(gltf.scene);
         });
-        parent.addToUpdateList(this);
     }
 
     update(timeStamp, speed) {

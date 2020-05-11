@@ -3,7 +3,7 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import MODEL from './cloud.gltf';
 
 class Cloud extends Group {
-    constructor(parent) {
+    constructor() {
         // Call parent Group() constructor
         super();
         this.name = 'cloud';
@@ -19,7 +19,6 @@ class Cloud extends Group {
         });
 
         this.boundingBox = new Box3;
-        parent.addToUpdateList(this);
     }
 
     update(timeStamp, speed) {

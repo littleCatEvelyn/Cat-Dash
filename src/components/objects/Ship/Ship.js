@@ -6,7 +6,7 @@ const originalWidth = 1919;
 const originalHeight = 946;
 
 class Ship extends Group {
-    constructor(parent) {
+    constructor() {
         // Call parent Group() constructor
         super();
         this.name = 'ship';
@@ -23,7 +23,6 @@ class Ship extends Group {
             this.add(gltf.scene);
         });
         // this.boundingBox = new Box3;
-        parent.addToUpdateList(this);
     }
 
     update(timeStamp, speed) {

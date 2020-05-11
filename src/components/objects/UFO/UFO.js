@@ -8,11 +8,10 @@ const originalWidth = 1919;
 const originalHeight = 946;
 
 class UFO extends Group {
-    constructor(parent) {
+    constructor() {
         // Call parent Group() constructor
         super();
         this.name = 'ufo';
-        this.move = 'left';
         this.label = 'obstacle';
 
         // the model is fetched from https://poly.google.com/view/fojR5i3h_nh
@@ -27,7 +26,6 @@ class UFO extends Group {
         });
 
         this.boundingBox = new Box3;
-        parent.addToUpdateList(this);
 
         const floatingLeft = new TWEEN.Tween(this.position)
             .to({ z: -1.5 * LIMIT }, 2000);

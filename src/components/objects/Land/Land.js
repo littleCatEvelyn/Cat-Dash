@@ -9,11 +9,10 @@ const originalWidth = 1919;
 const originalHeight = 946;
 
 class Land extends Group {
-    constructor(parent) {
+    constructor() {
         // Call parent Group() constructor
         super();
         this.name = 'land';
-        this.move = 'up';
         this.label = 'obstacle';
 
         const loader = new GLTFLoader();
@@ -26,7 +25,6 @@ class Land extends Group {
         });
 
         this.boundingBox = new Box3;
-        parent.addToUpdateList(this);
 
         const floatingUp = new TWEEN.Tween(this.position)
             .to({ y: UP_LIMIT }, 2000)

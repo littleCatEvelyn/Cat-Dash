@@ -10,7 +10,7 @@ import { WebGLRenderer, PerspectiveCamera, Vector3, Clock,
          AudioListener, Audio, AudioLoader } from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import { MainScene } from 'scenes';
-import { getNumOfFlower, setNumOfFlower, getGameState, setGameState } from 'utils'
+import { getNumOfFlower, setNumOfFlower, getGameState, setGameState, getAvailableScenes } from 'utils';
 
 // Initialize core ThreeJS components
 let scene = new MainScene();
@@ -50,6 +50,9 @@ controls.target.set(8, 0, 0);
 controls.enableDamping = true;
 controls.update();
 
+// console.log(scene);
+// console.log(getAvailableScenes());
+
 // Render loop
 const onAnimationFrameHandler = (timeStamp) => {
     controls.update();
@@ -57,6 +60,8 @@ const onAnimationFrameHandler = (timeStamp) => {
     let currentState = getGameState();
     if (scene.state.pause || currentState == 'end') {
         if (clock.running) {
+            // console.log(scene);
+            // console.log(getAvailableScenes());
             timeAccumulator += clock.getElapsedTime();
             clock.stop();
         }

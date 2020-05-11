@@ -9,12 +9,6 @@ import { StartScene } from 'scenes';
 
 const step = 3e-3 * window.innerWidth;
 
-const trackPositionList = [
-    new Vector3(250, 0, -step),
-    new Vector3(250, 0, 0),
-    new Vector3(250, 0, step)
-]
-
 class MainScene extends Scene {
     constructor() {
         // Call parent Scene() constructor
@@ -26,7 +20,7 @@ class MainScene extends Scene {
             pause: true,
             track: 0,
             probability: 0.98,
-            sceneProba: 0.99,
+            sceneProba: 0.985,
             speed: 0.5,
             speedFlag: false
         };
@@ -58,11 +52,11 @@ class MainScene extends Scene {
         const cat = new Cat(this);
         const mop = new Mop(this);
         const road = new Road(this, step).mesh;
-        const rainbow = new Rainbow(this);
-
         const star = new Star(this);
         const sun = new Sun(this);
-
+        const rainbow = new Rainbow(this);
+        this.addToUpdateList(rainbow);
+        
         this.player = cat;
         this.add(lights, cat, mop, road, rainbow, star, sun);
         initializeScene(this);
@@ -74,8 +68,7 @@ class MainScene extends Scene {
                 this.state.speed = Math.min(this.state.speed + 0.1, 2.3);
                 this.state.speedFlag = false;
                 this.state.probability = Math.max(this.state.probability - 2e-3, 0.85);
-                this.state.sceneProba = Math.max(this.state.probability - 2e-3, 0.98);
-                // console.log(this.state.probability);
+                this.state.sceneProba = Math.max(this.state.probability - 2e-3, 0.96);
             }
         } else {
             this.state.speedFlag = true;
@@ -88,8 +81,6 @@ class MainScene extends Scene {
     switchTrack(direction) {
         const { playerList } = this.state;
         switch(direction) {
-            case "ArrowUp": console.log("up");break;
-            case "ArrowDown": break;
             case "ArrowLeft":
                 if (this.state.track != -1) {
                     playerList.forEach(obj => {obj.movePlayer(-step);});
