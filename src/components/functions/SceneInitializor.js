@@ -1,21 +1,21 @@
 import { Building, City, Ship, Rainbow } from 'objects';
 import { Vector3 } from 'three';
 
-const objectList = ["city", "ship", "rainbow", "building"];
-const step = 2.5e-3 * window.innerWidth;
+const objectList = ["city", "ship", "building"];
+const step = 3e-3 * window.innerWidth;
 const trackPositionList = [
-    new Vector3(-100, 0, -15*step),
-    new Vector3(0, 0, -15*step),
-    new Vector3(100, 0, -15*step),
-    new Vector3(200, 0, -15*step),
-    new Vector3(300, 0, -15*step),
-    new Vector3(400, 0, -15*step),
-    new Vector3(-100, 0, 15*step),
-    new Vector3(0, 0, 15*step),
-    new Vector3(100, 0, 15*step),
-    new Vector3(200, 0, 15*step),
-    new Vector3(300, 0, 15*step),
-    new Vector3(400, 0, 15*step),
+    new Vector3(-100, 0, -12.5*step),
+    new Vector3(-100, 0, 12.5*step),
+    new Vector3(0, 0, -12.5*step),
+    new Vector3(0, 0, 12.5*step),
+    new Vector3(100, 0, -12.5*step),
+    new Vector3(100, 0, 12.5*step),
+    new Vector3(200, 0, -12.5*step),
+    new Vector3(200, 0, 12.5*step),
+    new Vector3(300, 0, -12.5*step),
+    new Vector3(300, 0, 12.5*step),
+    new Vector3(400, 0, -12.5*step),
+    new Vector3(400, 0, 12.5*step)
 ]
 
 function initializeScene(scene) {
@@ -34,17 +34,10 @@ function initializeScene(scene) {
             case "ship":
                 object = new Ship(scene);
                 break;
-            case "rainbow":
-                object = new Rainbow(scene);
-                break;
         }
 
-        if (objectName != "rainbow") {
-            const trackPosition = trackPositionList[Math.floor(Math.random() * trackPositionList.length)];
-            object.position.set(trackPosition.x, trackPosition.y, trackPosition.z);
-        } else {
-            object.position.set(250, 0, 0);
-        }
+        const trackPosition = trackPositionList[i];
+        object.position.set(trackPosition.x, trackPosition.y, trackPosition.z);
 
         scene.add(object);
         scene.addToUpdateList(object);

@@ -3,10 +3,10 @@ import { Vector3 } from 'three';
 import { getAvailableScenes } from 'utils';
 
 const objectList = ["rainbow", "city", "ship", "building"];
-const step = 2.5e-3 * window.innerWidth;
+const step = 3e-3 * window.innerWidth;
 const trackPositionList = [
-	new Vector3(300, 0, -15*step),
-	new Vector3(300, 0, 15*step),
+	new Vector3(300, 0, -12.5*step),
+	new Vector3(300, 0, 12.5*step),
 ]
 
 function generateScene(scene) {
