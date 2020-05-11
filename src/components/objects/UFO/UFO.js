@@ -2,8 +2,9 @@ import { Group, Box3 } from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import MODEL from './ufo.gltf';
 import { TWEEN } from 'three/examples/jsm/libs/tween.module.min.js';
+import { getStep } from 'utils';
 
-const LIMIT = 2.5e-3 * window.innerWidth;
+const LIMIT = getStep();
 const originalWidth = 1919;
 const originalHeight = 946;
 

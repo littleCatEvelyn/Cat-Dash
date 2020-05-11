@@ -3,7 +3,7 @@ import { addToNumOfFlower, setGameState } from 'utils'
 function detectCollision(scene, obstacle) {
     if (scene.player.boundingBox.intersectsBox(obstacle.boundingBox)) {
         switch(obstacle.name) {
-        	case 'flower': 
+            case 'flower': // flower are still in updateList until collected at limit
         		scene.remove(obstacle);
                 addToNumOfFlower(1);
                 scene.meow.play();

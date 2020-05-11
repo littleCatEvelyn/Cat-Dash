@@ -16,7 +16,7 @@ class Star extends Group {
         const loader = new GLTFLoader();
         loader.load(MODEL, (gltf) => {      
             gltf.scene.scale.set(1e-1, 1e-1, 1e-1);
-            gltf.scene.position.set(350, 50, 1e-1);
+            gltf.scene.position.set(350, 50, 0);
 
             // gltf.scene.rotation.set(0, Math.PI / 2, 0);
             this.add(gltf.scene);

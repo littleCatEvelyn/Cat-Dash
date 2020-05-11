@@ -4,6 +4,10 @@ let GAME_STATE = 'before';
 
 const OBSTACLE_TIME_LIST = [undefined, undefined, undefined];
 
+const SCENE_TIME_LIST = [undefined, undefined];
+
+const STEP = 3e-3 * window.innerWidth;
+
 const availableScenes = {
 	"rainbow": [],
 	 "city": [],
@@ -43,6 +47,10 @@ function getObstacleTimeList() {
 	return OBSTACLE_TIME_LIST;
 }
 
+function getSceneTimeList() {
+	return SCENE_TIME_LIST;
+}
+
 function getAvailableScenes() {
 	return availableScenes;
 }
@@ -51,6 +59,11 @@ function getAvailableObstacles() {
 	return availableObstacles;
 }
 
+function getStep() {
+	return STEP;
+}
+
 export { getNumOfFlower, setNumOfFlower, addToNumOfFlower, 
 		 getGameState, setGameState, getObstacleTimeList,
-		 getAvailableScenes, getAvailableObstacles };
+		 getSceneTimeList, getAvailableScenes,
+		 getAvailableObstacles, getStep };

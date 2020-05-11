@@ -11,16 +11,14 @@ const step = 3e-3 * window.innerWidth;
 
 class MainScene extends Scene {
     constructor() {
-        // Call parent Scene() constructor
         super();
-        // Init state
         this.state = {
             updateList: [],
-            playerList: [], // subset of updateList, including obj labeled player
+            playerList: [],
             pause: true,
             track: 0,
             probability: 0.98,
-            sceneProba: 0.985,
+            sceneProba: 0.95,
             speed: 0.5,
             speedFlag: false
         };
@@ -55,8 +53,8 @@ class MainScene extends Scene {
         const star = new Star(this);
         const sun = new Sun(this);
         const rainbow = new Rainbow(this);
+
         this.addToUpdateList(rainbow);
-        
         this.player = cat;
         this.add(lights, cat, mop, road, rainbow, star, sun);
         initializeScene(this);
@@ -67,8 +65,8 @@ class MainScene extends Scene {
             if (this.state.speedFlag) {
                 this.state.speed = Math.min(this.state.speed + 0.1, 2.3);
                 this.state.speedFlag = false;
-                this.state.probability = Math.max(this.state.probability - 2e-3, 0.85);
-                this.state.sceneProba = Math.max(this.state.probability - 2e-3, 0.96);
+                this.state.probability = Math.max(this.state.probability - 2e-3, 0.80);
+                this.state.sceneProba = Math.max(this.state.probability - 2e-3, 0.90);
             }
         } else {
             this.state.speedFlag = true;

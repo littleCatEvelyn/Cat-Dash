@@ -19,7 +19,7 @@ class Ship extends Group {
                 22, 22 * window.innerHeight / originalHeight, 22 * window.innerWidth / originalWidth
             );
             gltf.scene.rotation.set(0, Math.PI, 0);
-            gltf.scene.position.set(0, 7, 10);
+            gltf.scene.position.set(51.5, 7, 10);
             this.add(gltf.scene);
         });
         // this.boundingBox = new Box3;

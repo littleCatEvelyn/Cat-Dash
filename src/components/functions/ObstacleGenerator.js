@@ -1,9 +1,9 @@
 import { Flower, Land, Cloud, UFO, Tree} from 'objects';
 import { Vector3 } from 'three';
-import { getObstacleTimeList, getAvailableObstacles } from "utils";
+import { getObstacleTimeList, getAvailableObstacles, getStep } from "utils";
 
 const obstacleList = ["flower", "ufo", "land", "tree", "cloud"];
-const step = 3e-3 * window.innerWidth;
+const step = getStep();
 const PUT_DISTANCE = 250;
 const trackPositionList = [
 	new Vector3(PUT_DISTANCE, 0, -step),
@@ -11,7 +11,7 @@ const trackPositionList = [
 	new Vector3(PUT_DISTANCE, 0, step)
 ]
 
-function canPut(trackId, obstacle) {
+function playabilityCheck(trackId, obstacle) {
     let neighborId = undefined;
     if (trackId == 0)
         neighborId = [1, 2];
@@ -20,13 +20,13 @@ function canPut(trackId, obstacle) {
     else
         neighborId = [0, 1];
 
-    var obstacleTimeList = getObstacleTimeList();
+    const obstacleTimeList = getObstacleTimeList();
 
     const neighbor1 = obstacleTimeList[neighborId[0]];
     const neighbor2 = obstacleTimeList[neighborId[1]];
     
     if (neighbor1 == undefined || neighbor2 == undefined || 
-        PUT_DISTANCE - neighbor1.position.x > 8 || PUT_DISTANCE - neighbor2.position.x > 8) {
+        PUT_DISTANCE - neighbor1.position.x >= 8 || PUT_DISTANCE - neighbor2.position.x >= 8) {
         obstacleTimeList[trackId] = obstacle;
         return true;
     } else {
@@ -53,26 +53,26 @@ function generateObstacle(scene, elapsedTime) {
         } else {
             switch(obstacleName) {
                 case "flower":
-                    obstacle = new Flower(scene);
+                    obstacle = new Flower();
                     break;
                 case "ufo":
-                    obstacle = new UFO(scene);
+                    obstacle = new UFO();
                     break;
                 case "land":
-                    obstacle = new Land(scene);
+                    obstacle = new Land();
                     break;
                 case "tree":
-                    obstacle = new Tree(scene);
+                    obstacle = new Tree();
                     break;
                 case "cloud":
-                    obstacle = new Cloud(scene);
+                    obstacle = new Cloud();
                     break;
             }
         }
         
         obstacle.position.set(trackPosition.x, trackPosition.y, trackPosition.z);
 
-        if (canPut(trackId, obstacle)) {
+        if (playabilityCheck(trackId, obstacle)) {
             scene.add(obstacle);
             scene.addToUpdateList(obstacle);
         } 

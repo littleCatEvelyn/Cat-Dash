@@ -1,7 +1,7 @@
 import { detectCollision } from 'functions';
 import { getAvailableScenes, getAvailableObstacles } from 'utils';
 
-const LIMIT = -250;
+const LIMIT = -100;
 
 function updateUpdateList(timeStamp, scene) {
     const newUpdateLst = [];
