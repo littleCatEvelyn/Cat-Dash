@@ -25,7 +25,7 @@ class Sun extends Group {
     }
 
     update(timeStamp, speed) {
-        this.rotation.x += Math.PI / 150;
+        this.rotation.x += Math.PI / 500;
     }
 }
 
