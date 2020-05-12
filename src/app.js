@@ -55,25 +55,10 @@ const onAnimationFrameHandler = (timeStamp) => {
     controls.update();
     renderer.render(scene, camera);
     let currentState = getGameState();
-    if (scene.state.pause || currentState == 'end') {
-        if (clock.running) {
-            timeAccumulator += clock.getElapsedTime();
-            clock.stop();
-        }
-        if (sound.isPlaying) {
-            sound.pause();
-        }
-    } else {
-        if (!clock.running){
-            clock.start();
-        }
-        if (!sound.isPlaying) {
-            sound.play();
-        }
-        if (getGameState() == 'before') {
-            scene.remove(scene.startScene);
-            setGameState('on progress');
-        }
+    if (currentState == 'end') {
+        sound.pause();
+        clock.stop();
+    } else if (!scene.state.pause) {
         let totalElapsedTime = Math.round(timeAccumulator + clock.getElapsedTime());
         scene.update && scene.update(timeStamp, totalElapsedTime); 
         document.getElementById('score').innerHTML = totalElapsedTime + getNumOfFlower();
@@ -95,8 +80,21 @@ window.addEventListener('resize', windowResizeHandler, false);
 let isKeyboardLocked = false;
 window.addEventListener('keydown', event => {
     const key = event.key;
-    if (key == ' ')
+    if (key == ' ') {
         scene.state.pause = !scene.state.pause;
+        if (getGameState() == 'before' && !scene.state.pause) {
+            scene.remove(scene.startScene);
+            setGameState('on progress');
+        }
+        if (scene.state.pause) {
+            sound.pause();
+            timeAccumulator += clock.getElapsedTime();
+            clock.stop();
+        } else {
+            clock.start();
+            sound.play();
+        }
+    }
     if (!scene.state.pause) {
         if (isKeyboardLocked) {
             return;
