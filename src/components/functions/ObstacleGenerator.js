@@ -12,6 +12,8 @@ const trackPositionList = [
 ]
 
 function playabilityCheck(trackId, obstacle) {
+    if (obstacle.name == 'flower')
+        return true;
     let neighborId = undefined;
     if (trackId == 0)
         neighborId = [1, 2];
