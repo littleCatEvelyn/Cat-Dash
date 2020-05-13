@@ -18,7 +18,7 @@ class Tree extends Group {
             gltf.scene.scale.set(
                 4, 4 * window.innerHeight / originalHeight, 4 * window.innerWidth / originalWidth
             );
-            gltf.scene.position.set(0, -3.3, 2.8);
+            gltf.scene.position.set(0, -3.3, 3);
             this.add(gltf.scene);
         });
 

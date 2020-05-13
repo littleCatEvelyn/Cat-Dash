@@ -73,7 +73,7 @@ function generateObstacle(scene, elapsedTime) {
         }
         
         if (obstacleName == 'tree')
-            obstacle.position.set(trackPosition.x, trackPosition.y, 1.5 * trackPosition.z);
+            obstacle.position.set(trackPosition.x, trackPosition.y, 1.3 * trackPosition.z);
         else
             obstacle.position.set(trackPosition.x, trackPosition.y, trackPosition.z);
 
