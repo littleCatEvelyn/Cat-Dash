@@ -2,7 +2,7 @@ import { Flower, Land, Cloud, UFO, Tree} from 'objects';
 import { Vector3 } from 'three';
 import { getObstacleTimeList, getAvailableObstacles, getStep } from "utils";
 
-const obstacleList = ["tree"]//, "ufo", "land", "flower", "cloud"];
+const obstacleList = ["tree", "ufo", "land", "flower", "cloud"];
 const step = getStep();
 const PUT_DISTANCE = 250;
 const trackPositionList = [
