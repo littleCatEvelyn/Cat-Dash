@@ -2,7 +2,7 @@ import { Flower, Land, Cloud, UFO, Tree} from 'objects';
 import { Vector3 } from 'three';
 import { getObstacleTimeList, getAvailableObstacles, getStep } from "utils";
 
-const obstacleList = ["flower", "ufo", "land", "tree", "cloud"];
+const obstacleList = ["tree"]//, "ufo", "land", "flower", "cloud"];
 const step = getStep();
 const PUT_DISTANCE = 250;
 const trackPositionList = [
@@ -72,7 +72,10 @@ function generateObstacle(scene, elapsedTime) {
             }
         }
         
-        obstacle.position.set(trackPosition.x, trackPosition.y, trackPosition.z);
+        if (obstacleName == 'tree')
+            obstacle.position.set(trackPosition.x, trackPosition.y, 1.5 * trackPosition.z);
+        else
+            obstacle.position.set(trackPosition.x, trackPosition.y, trackPosition.z);
 
         if (playabilityCheck(trackId, obstacle)) {
             scene.add(obstacle);

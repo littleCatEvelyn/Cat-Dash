@@ -47,8 +47,19 @@ function getObstacleTimeList() {
 	return OBSTACLE_TIME_LIST;
 }
 
+function resetObstacleTimeList() {
+	OBSTACLE_TIME_LIST[0] = undefined;
+	OBSTACLE_TIME_LIST[1] = undefined;
+	OBSTACLE_TIME_LIST[2] = undefined;
+}
+
 function getSceneTimeList() {
 	return SCENE_TIME_LIST;
+}
+
+function resetSceneTimeList() {
+	SCENE_TIME_LIST[0] = undefined;
+	SCENE_TIME_LIST[1] = undefined;
 }
 
 function getAvailableScenes() {
@@ -66,4 +77,5 @@ function getStep() {
 export { getNumOfFlower, setNumOfFlower, addToNumOfFlower, 
 		 getGameState, setGameState, getObstacleTimeList,
 		 getSceneTimeList, getAvailableScenes,
-		 getAvailableObstacles, getStep };
+		 getAvailableObstacles, getStep, resetObstacleTimeList,
+		 resetSceneTimeList };
