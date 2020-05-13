@@ -6,8 +6,9 @@ import { BackgroundTexture } from 'textures';
 import { generateObstacle, generateScene, initializeScene,
          updateScene } from 'functions';
 import { StartScene } from 'scenes';
+import { getStep } from 'utils';
 
-const step = 3e-3 * window.innerWidth;
+const step = getStep();
 
 class MainScene extends Scene {
     constructor() {
