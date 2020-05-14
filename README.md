@@ -7,7 +7,7 @@ The flying speed and density of obstacles increase as the game goes on to make i
 [Online Demo](https://littlecatevelyn.github.io/Cat-Dash/)
 
 ## Installation
-To build this project, you will need to use GitHub's NodeJS Package Manager (npm) to manage and install project dependencies. All npm settings, as well as your project dependencies and their versionings, are defined in the file `package.json`. We will unpack this file in the next section.
+To build this project, you will need to use GitHub's NodeJS Package Manager (npm) to manage and install project dependencies. All npm settings, as well as your project dependencies and their versionings, are defined in the file `package.json`. 
 
 The NodeJS Package Manager, which is the world's largest software registry and supports over one million open source JavaScript packages and libraries, runs in a NodeJS runtime. The NodeJS runtime is essentially a port of Google Chrome's JavaScript V8 engine that will run directly in your terminal (instead of within a browser).
 
