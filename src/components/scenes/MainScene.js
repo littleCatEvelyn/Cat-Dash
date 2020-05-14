@@ -18,7 +18,7 @@ class MainScene extends Scene {
             playerList: [],
             pause: true,
             track: 0,
-            probability: 0.985,
+            probability: 0.98,
             sceneProba: 0.95,
             speed: 0.5,
             speedFlag: false
