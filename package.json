@@ -1,7 +1,7 @@
 {
   "name": "cat-dash",
   "repository": "Cat-Dash",
-  "version": "0.1.0",
+  "version": "1.1.0",
   "title": "Cat Dash",
   "description": "A cat sitting on a mop flying in cites. Switch tracks to avoid obstacles.",
   "keywords": [

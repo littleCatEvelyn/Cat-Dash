@@ -86,6 +86,7 @@ window.addEventListener('keydown', event => {
         if (getGameState() == 'before' && !scene.state.pause) {
             scene.remove(scene.startScene);
             setGameState('on progress');
+            document.getElementById('game').style.display = 'block';
         }
         if (scene.state.pause) {
             sound.pause();
