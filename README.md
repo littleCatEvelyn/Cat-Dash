@@ -1,6 +1,6 @@
 # COS 426 Final Project: Cat Dash
 
-Cat dash is an endless runner game. use left and right arrow keys to control the cat avoid obstacles and collect flowers!
+Cat dash is an endless runner game. Players use left and right arrow keys to control the cat avoid obstacles and collect flowers!
 
 The flying speed and density of obstacles increase as the game goes on to make it more challenging and thrilling. 
 
