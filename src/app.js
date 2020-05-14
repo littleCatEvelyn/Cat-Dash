@@ -123,11 +123,11 @@ window.addEventListener('click', event => {
     scene = new MainScene();
     setGameState('before');
 
-    var game = document.getElementById("game");
+    var game = document.getElementById('game');
     game.style.display = 'none';
     document.getElementById('score').innerHTML = 0;
 
-    var start = document.getElementById("start");
+    var start = document.getElementById('start');
     start.style.display = 'block';
     setTimeout(loading, 3500);
 })
